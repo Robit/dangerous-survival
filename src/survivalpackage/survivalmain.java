@@ -1,7 +1,5 @@
 package survivalpackage;
 
-import java.awt.Color;
-import java.awt.TextComponent;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.server.Skeleton;
 import java.util.ArrayList;
@@ -11,15 +9,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
-import java.util.Vector;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Ageable;
@@ -43,6 +43,7 @@ import org.bukkit.entity.DragonFireball;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Enderman;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Evoker;
 import org.bukkit.entity.Fireball;
@@ -78,6 +79,7 @@ import org.bukkit.entity.WitherSkull;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockGrowEvent;
@@ -113,6 +115,36 @@ import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.loot.LootContext;
+import org.bukkit.loot.LootContext.Builder;
+import org.bukkit.loot.LootTable;
+import org.bukkit.loot.Lootable;
+import org.bukkit.material.MaterialData;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.projectiles.ProjectileSource;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.Team;
+import org.bukkit.scoreboard.Team.Option;
+import org.bukkit.scoreboard.Team.OptionStatus;
+import org.bukkit.util.BlockIterator;
+import org.bukkit.util.BoundingBox;
+import org.bukkit.util.EulerAngle;
+import org.bukkit.util.Vector;
+
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class survivalmain extends JavaPlugin implements Listener, CommandExecutor{
 
@@ -1873,7 +1905,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		}
 		thirst.put(p, thirstA);
 		if(adding || thirstA % 5 == 0) {
-		p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.BOLD + "" + ChatColor.BLUE + "-(" + thirstA + ")-"));
+            p.spigot().sendMessage(new TextComponent(ChatColor.BOLD + "" + ChatColor.BLUE + "-(" + thirstA + ")-"));
 		}
 	}
 	
@@ -4624,7 +4656,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		ItemStack item = null;
 		int choose = randor.nextInt(31);
 		int i = randor.nextInt(3);
-		if(choose == 0) {
+        if (choose == 0) {
 			if (i == 0) {
 				item = new ItemStack(Material.GOLDEN_SWORD);
 				ItemMeta itemmeta = item.getItemMeta();
