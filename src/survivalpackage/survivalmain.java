@@ -113,33 +113,6 @@ import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.loot.LootContext;
-import org.bukkit.loot.LootTable;
-import org.bukkit.loot.Lootable;
-import org.bukkit.material.MaterialData;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import org.bukkit.projectiles.ProjectileSource;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitScheduler;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
-import org.bukkit.scoreboard.Team;
-import org.bukkit.scoreboard.Team.OptionStatus;
-import org.bukkit.util.BlockIterator;
-import org.bukkit.util.BoundingBox;
-import org.bukkit.util.EulerAngle;
-
-import net.md_5.bungee.api.ChatMessageType;
 
 public class survivalmain extends JavaPlugin implements Listener, CommandExecutor{
 
@@ -1251,12 +1224,12 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		ItemMeta itemmeta4 = m4.getItemMeta();
 		ItemMeta itemmeta5 = m5.getItemMeta();
 		ItemMeta itemmeta6 = m6.getItemMeta();
-		itemmeta.setDisplayName("§fHuman Meat");
-		itemmeta1.setDisplayName("§fHuman Meat");
-		itemmeta3.setDisplayName("§fBone Marrow");
-		itemmeta4.setDisplayName("§fBlood");
-		itemmeta5.setDisplayName("§fBone Fragment");
-		itemmeta6.setDisplayName("§fEyeball");
+                itemmeta.setDisplayName("Human Meat");
+                itemmeta1.setDisplayName("Human Meat");
+                itemmeta3.setDisplayName("Bone Marrow");
+                itemmeta4.setDisplayName("Blood");
+                itemmeta5.setDisplayName("Bone Fragment");
+                itemmeta6.setDisplayName("Eyeball");
 		m.setAmount(randor.nextInt(3)+1);
 		m1.setAmount(randor.nextInt(3)+1);
 		m2.setAmount(randor.nextInt(3)+1);
@@ -4493,19 +4466,19 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		List<String> lore = new ArrayList<String>();
 		lore.add(ChatColor.BLACK + "Nether Artifact");
 		if(choice == 0) {
-			im.setDisplayName("§2Nether Artifact");
+            im.setDisplayName("Nether Artifact");
 		}
 		else if(choice == 1) {
-			im.setDisplayName("§8Nether Artifact");
+            im.setDisplayName("Nether Artifact");
 		}
 		else if(choice == 2) {
-			im.setDisplayName("§3Nether Artifact");
+            im.setDisplayName("Nether Artifact");
 		}
 		else if(choice == 3) {
-			im.setDisplayName("§6Nether Artifact");
+            im.setDisplayName("Nether Artifact");
 		}
 		else if(choice == 4) {
-			im.setDisplayName("§5Nether Artifact");
+            im.setDisplayName("Nether Artifact");
 		}
 		im.setLore(lore);
 		i.setItemMeta(im);
@@ -4655,21 +4628,21 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (i == 0) {
 				item = new ItemStack(Material.GOLDEN_SWORD);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("Artifact");
+                itemmeta.setDisplayName("Dud...");
 				itemmeta.setLore(Arrays.asList("pg1"));
 				item.setItemMeta(itemmeta);
 			}
 			if (i == 1) {
 				item = new ItemStack(Material.GOLDEN_SWORD);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("Artifact");
+                itemmeta.setDisplayName("Dud...");
 				itemmeta.setLore(Arrays.asList("pg1g6"));
 				item.setItemMeta(itemmeta);
 			}
 			if (i == 2) {
 				item = new ItemStack(Material.GOLDEN_SWORD);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("Artifact");
+                itemmeta.setDisplayName("Dud...");
 				itemmeta.setLore(Arrays.asList("n12I4woop"));
 				item.setItemMeta(itemmeta);
 			}
@@ -4678,7 +4651,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.FEATHER);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§fPulling Device");
+                itemmeta.setDisplayName("Pulling Device");
 				itemmeta.setLore(Arrays.asList("Pulling Device Level: 3"));
 				itemmeta.addEnchant(Enchantment.LURE, 1, false);
 				itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -4687,7 +4660,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			else if (randor.nextInt(3) == 1) {
 				item = new ItemStack(Material.FEATHER);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§fPulling Device");
+                itemmeta.setDisplayName("Pulling Device");
 				itemmeta.setLore(Arrays.asList("Pulling Device Level: 2"));
 				itemmeta.addEnchant(Enchantment.LURE, 1, false);
 				itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -4696,7 +4669,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			else {
 				item = new ItemStack(Material.FEATHER);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§fPulling Device");
+                itemmeta.setDisplayName("Pulling Device");
 				itemmeta.setLore(Arrays.asList("Pulling Device Level: 1"));
 				itemmeta.addEnchant(Enchantment.LURE, 1, false);
 				itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -4707,21 +4680,21 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.COBWEB);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§fExplosive Web");
+                itemmeta.setDisplayName("Explosive Web");
 				itemmeta.setLore(Arrays.asList("Explosive Web Level: 3"));
 				item.setItemMeta(itemmeta);
 			} 
 			else if (randor.nextInt(3) == 1) {
 					item = new ItemStack(Material.COBWEB);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§fExplosive Web");
+                itemmeta.setDisplayName("Explosive Web");
 					itemmeta.setLore(Arrays.asList("Explosive Web Level: 2"));
 					item.setItemMeta(itemmeta);
 			} 
 			else {
 					item = new ItemStack(Material.COBWEB);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§fExplosive Web");
+                itemmeta.setDisplayName("Explosive Web");
 					itemmeta.setLore(Arrays.asList("Explosive Web Level: 1"));
 					item.setItemMeta(itemmeta);
 				}
@@ -4730,7 +4703,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			item = new ItemStack(Material.LEATHER_BOOTS);
 			LeatherArmorMeta itemM = (LeatherArmorMeta) item.getItemMeta();
 			itemM.setColor(Color.fromRGB(0, 0, 0));
-			itemM.setDisplayName("§0Boots of Beserk");
+            itemM.setDisplayName("Boots of Beserk");
 			itemM.setLore(Arrays.asList("Hide in the Dark but Die in the Light"));
 			item.setItemMeta(itemM);
 		}
@@ -4738,21 +4711,21 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.GRAY_DYE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§7Special Egg");
+                itemmeta.setDisplayName("Special Egg");
 				itemmeta.setLore(Arrays.asList("Special Egg Level: 3"));
 				item.setItemMeta(itemmeta);
 			} 
 			else if (randor.nextInt(3) == 1) {
 					item = new ItemStack(Material.GRAY_DYE);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§7Special Egg");
+                itemmeta.setDisplayName("Special Egg");
 					itemmeta.setLore(Arrays.asList("Special Egg Level: 2"));
 					item.setItemMeta(itemmeta);
 			} 
 			else {
 						item = new ItemStack(Material.GRAY_DYE);
 						ItemMeta itemmeta = item.getItemMeta();
-						itemmeta.setDisplayName("§7Special Egg");
+                itemmeta.setDisplayName("Special Egg");
 						itemmeta.setLore(Arrays.asList("Special Egg Level: 1"));
 						item.setItemMeta(itemmeta);
 			}
@@ -4761,21 +4734,21 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.SUGAR);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§9Nyoom");
+                itemmeta.setDisplayName("Nyoom");
 				itemmeta.setLore(Arrays.asList("Nyoom Level: 3"));
 				item.setItemMeta(itemmeta);
 			} 
 			else if (randor.nextInt(3) == 1) {
 					item = new ItemStack(Material.SUGAR);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§9Nyoom");
+                itemmeta.setDisplayName("Nyoom");
 					itemmeta.setLore(Arrays.asList("Nyoom Level: 2"));
 					item.setItemMeta(itemmeta);
 			} 
 			else {
 						item = new ItemStack(Material.SUGAR);
 						ItemMeta itemmeta = item.getItemMeta();
-						itemmeta.setDisplayName("§9Nyoom");
+                itemmeta.setDisplayName("Nyoom");
 						itemmeta.setLore(Arrays.asList("Nyoom Level: 1"));
 						item.setItemMeta(itemmeta);
 				}
@@ -4783,7 +4756,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		else if(choose == 6) {
 			item = new ItemStack(Material.COAL);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§0Really Sharp Dust");
+            itemmeta.setDisplayName("Really Sharp Dust");
 			itemmeta.setLore(Arrays.asList("Really Sharp Dust"));
 			item.setItemMeta(itemmeta);
 		}
@@ -4791,19 +4764,19 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.FLINT);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§0Wither Talisman");
+                itemmeta.setDisplayName("Wither Talisman");
 				itemmeta.setLore(Arrays.asList("Wither Talisman Level: 3"));
 				item.setItemMeta(itemmeta);
 			} else if (randor.nextInt(3) == 1) {
 				item = new ItemStack(Material.FLINT);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§0Wither Talisman");
+                itemmeta.setDisplayName("Wither Talisman");
 				itemmeta.setLore(Arrays.asList("Wither Talisman Level: 2"));
 				item.setItemMeta(itemmeta);
 				} else {
 					item = new ItemStack(Material.FLINT);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§0Wither Talisman");
+                itemmeta.setDisplayName("Wither Talisman");
 					itemmeta.setLore(Arrays.asList("Wither Talisman Level: 1"));
 					item.setItemMeta(itemmeta);
 				}
@@ -4812,13 +4785,13 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.LIME_DYE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§aTheif Talisman");
+                itemmeta.setDisplayName("Theif Talisman");
 				itemmeta.setLore(Arrays.asList("Theif Talisman Level: 2"));
 				item.setItemMeta(itemmeta);
 			} else{
 				item = new ItemStack(Material.LIME_DYE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§aTheif Talisman");
+                itemmeta.setDisplayName("Theif Talisman");
 				itemmeta.setLore(Arrays.asList("Theif Talisman Level: 1"));
 				item.setItemMeta(itemmeta);
 				}
@@ -4826,7 +4799,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		else if(choose == 9) {
 			item = new ItemStack(Material.SAND);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§eQuicksand Talisman");
+            itemmeta.setDisplayName("Quicksand Talisman");
 			itemmeta.setLore(Arrays.asList("Quicksand Talisman"));
 			item.setItemMeta(itemmeta);
 		}
@@ -4863,14 +4836,14 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				item = new ItemStack(Material.COOKED_RABBIT);
 			}
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§cHearty Food");
+            itemmeta.setDisplayName("Hearty Food");
 			itemmeta.setLore(Arrays.asList("Hearty Food"));
 			item.setItemMeta(itemmeta);
 		}
 		else if(choose == 11) {
 			item = new ItemStack(Material.RED_DYE);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§cLifesteal Talisman");
+            itemmeta.setDisplayName("Lifesteal Talisman");
 			itemmeta.setLore(Arrays.asList("Lifesteal Talisman"));
 			item.setItemMeta(itemmeta);
 		}
@@ -4878,7 +4851,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			item = new ItemStack(Material.SPLASH_POTION);
 			PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
 			potionMeta.setColor(Color.YELLOW);
-			potionMeta.setDisplayName("§eLightning Bottle");
+            potionMeta.setDisplayName("Lightning Bottle");
 			potionMeta.setLore(Arrays.asList("Lightning Bottle"));
 			potionMeta.addEnchant(Enchantment.LURE, 1, false);
 			potionMeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -4888,21 +4861,21 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.FERMENTED_SPIDER_EYE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§4Eye of Weakness");
+                itemmeta.setDisplayName("Eye of Weakness");
 				itemmeta.setLore(Arrays.asList("Eye of Weakness Level: 3"));
 				item.setItemMeta(itemmeta);
 			} 
 			else if (randor.nextInt(3) == 1) {
 				item = new ItemStack(Material.FERMENTED_SPIDER_EYE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§4Eye of Weakness");
+                itemmeta.setDisplayName("Eye of Weakness");
 				itemmeta.setLore(Arrays.asList("Eye of Weakness Level: 2"));
 				item.setItemMeta(itemmeta);
 				} 
 			else {
 					item = new ItemStack(Material.FERMENTED_SPIDER_EYE);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§4Eye of Weakness");
+                itemmeta.setDisplayName("Eye of Weakness");
 					itemmeta.setLore(Arrays.asList("Eye of Weakness Level: 1"));
 					item.setItemMeta(itemmeta);
 					
@@ -4912,19 +4885,19 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.FIRE_CHARGE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§6Molten Core");
+                itemmeta.setDisplayName("Molten Core");
 				itemmeta.setLore(Arrays.asList("Molten Core Level: 3"));
 				item.setItemMeta(itemmeta);
 			} else if (randor.nextInt(3) == 1) {
 				item = new ItemStack(Material.FIRE_CHARGE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§6Molten Core");
+                itemmeta.setDisplayName("Molten Core");
 				itemmeta.setLore(Arrays.asList("Molten Core Level: 2"));
 				item.setItemMeta(itemmeta);
 				} else {
 					item = new ItemStack(Material.FIRE_CHARGE);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§6Molten Core");
+                itemmeta.setDisplayName("Molten Core");
 					itemmeta.setLore(Arrays.asList("Molten Core Level: 1"));
 					item.setItemMeta(itemmeta);
 					
@@ -4933,14 +4906,14 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		else if(choose == 15) {
 			item = new ItemStack(Material.PRISMARINE_SHARD);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§3Gravity Anomaly");
+            itemmeta.setDisplayName("Gravity Anomaly");
 			itemmeta.setLore(Arrays.asList("Gravity Anomaly"));
 			item.setItemMeta(itemmeta);
 		}
 		else if(choose == 16) {
 			item = new ItemStack(Material.ROTTEN_FLESH);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§8Spoiled Food");
+            itemmeta.setDisplayName("Spoiled Food");
 			itemmeta.setLore(Arrays.asList("Spoiled Food"));
 			item.setItemMeta(itemmeta);
 		}
@@ -4948,7 +4921,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.FIRE_CHARGE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§6Compressed Fireball");
+                itemmeta.setDisplayName("Compressed Fireball");
 				itemmeta.setLore(Arrays.asList("Compressed Fireball Level: 3"));
 				itemmeta.addEnchant(Enchantment.LURE, 1, false);
 				itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -4957,7 +4930,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			else if (randor.nextInt(3) == 1) {
 				item = new ItemStack(Material.FIRE_CHARGE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§6Compressed Fireball");
+                itemmeta.setDisplayName("Compressed Fireball");
 				itemmeta.setLore(Arrays.asList("Compressed Fireball Level: 2"));
 				itemmeta.addEnchant(Enchantment.LURE, 1, false);
 				itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -4966,7 +4939,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			else {
 					item = new ItemStack(Material.FIRE_CHARGE);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§6Compressed Fireball");
+                itemmeta.setDisplayName("Compressed Fireball");
 					itemmeta.setLore(Arrays.asList("Compressed Fireball Level: 1"));
 					itemmeta.addEnchant(Enchantment.LURE, 1, false);
 					itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -4978,19 +4951,19 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.BOW);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§7Assault Bow");
+                itemmeta.setDisplayName("Assault Bow");
 				itemmeta.setLore(Arrays.asList("Assault Bow Level: 3"));
 				item.setItemMeta(itemmeta);
 			} else if (randor.nextInt(3) == 1) {
 				item = new ItemStack(Material.BOW);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§7Assault Bow");
+                itemmeta.setDisplayName("Assault Bow");
 				itemmeta.setLore(Arrays.asList("Assault Bow Level: 2"));
 				item.setItemMeta(itemmeta);
 				} else {
 					item = new ItemStack(Material.BOW);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§7Assault Bow");
+                itemmeta.setDisplayName("Assault Bow");
 					itemmeta.setLore(Arrays.asList("Assault Bow Level: 1"));
 					item.setItemMeta(itemmeta);
 				}
@@ -4999,19 +4972,19 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.GOLDEN_AXE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§0Anogoth");
+                itemmeta.setDisplayName("Anogoth");
 				itemmeta.setLore(Arrays.asList("Anogoth Level: 3"));
 				item.setItemMeta(itemmeta);
 			} else if (randor.nextInt(3) == 1) {
 				item = new ItemStack(Material.GOLDEN_AXE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§0Anogoth");
+                itemmeta.setDisplayName("Anogoth");
 				itemmeta.setLore(Arrays.asList("Anogoth Level: 2"));
 				item.setItemMeta(itemmeta);
 				} else {
 					item = new ItemStack(Material.GOLDEN_AXE);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§0Anogoth");
+                itemmeta.setDisplayName("Anogoth");
 					itemmeta.setLore(Arrays.asList("Anogoth Level: 1"));
 					item.setItemMeta(itemmeta);
 				}
@@ -5020,19 +4993,19 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if (randor.nextInt(5) == 1) {
 				item = new ItemStack(Material.IRON_CHESTPLATE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§7Nano-Tech Armor");
+                itemmeta.setDisplayName("Nano-Tech Armor");
 				itemmeta.setLore(Arrays.asList("Nano-Tech Armor Level: 3"));
 				item.setItemMeta(itemmeta);
 			} else if (randor.nextInt(3) == 1) {
 				item = new ItemStack(Material.IRON_CHESTPLATE);
 				ItemMeta itemmeta = item.getItemMeta();
-				itemmeta.setDisplayName("§7Nano-Tech Armor");
+                itemmeta.setDisplayName("Nano-Tech Armor");
 				itemmeta.setLore(Arrays.asList("Nano-Tech Armor Level: 2"));
 				item.setItemMeta(itemmeta);
 				} else {
 					item = new ItemStack(Material.IRON_CHESTPLATE);
 					ItemMeta itemmeta = item.getItemMeta();
-					itemmeta.setDisplayName("§7Nano-Tech Armor");
+                itemmeta.setDisplayName("Nano-Tech Armor");
 					itemmeta.setLore(Arrays.asList("Nano-Tech Armor Level: 1"));
 					item.setItemMeta(itemmeta);
 					
@@ -5041,7 +5014,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		else if(choose == 21) {
 			item = new ItemStack(Material.GHAST_TEAR);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§0Goddess Tear");
+            itemmeta.setDisplayName("Goddess Tear");
 			itemmeta.setLore(Arrays.asList("Goddess Tear"));
 			itemmeta.addEnchant(Enchantment.LURE, 1, false);
 			itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -5050,7 +5023,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		else if(choose == 22) {
 			item = new ItemStack(Material.GOLD_NUGGET);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§6Beserk Tear");
+            itemmeta.setDisplayName("Beserk Tear");
 			itemmeta.setLore(Arrays.asList("Beserk Tear"));
 			itemmeta.addEnchant(Enchantment.LURE, 1, false);
 			itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -5059,7 +5032,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		else if(choose == 23) {
 			item = new ItemStack(Material.IRON_NUGGET);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§7Screamer Talisman");
+            itemmeta.setDisplayName("Screamer Talisman");
 			itemmeta.setLore(Arrays.asList("Screamer Talisman"));
 			itemmeta.addEnchant(Enchantment.LURE, 1, false);
 			itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -5069,7 +5042,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			item = new ItemStack(Material.PLAYER_HEAD, 1 , (short) 3);
 			SkullMeta itemmeta = (SkullMeta) item.getItemMeta();
 			itemmeta.setOwner("colin");
-			itemmeta.setDisplayName("§4Watcher Head");
+            itemmeta.setDisplayName("Watcher Head");
 			itemmeta.setLore(Arrays.asList("Watcher Head"));
 			item.setItemMeta(itemmeta);
 		}
@@ -5077,7 +5050,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		else if(choose == 25) {
 			item = new ItemStack(Material.FIRE_CHARGE);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§6DIY Fireball");
+            itemmeta.setDisplayName("DIY Fireball");
 			itemmeta.setLore(Arrays.asList("DIY Fireball"));
 			item.setItemMeta(itemmeta);
 		}
@@ -5085,7 +5058,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			item = new ItemStack(Material.POTION);
 			PotionMeta itemmeta = (PotionMeta) item.getItemMeta();
 			itemmeta.setColor(Color.BLACK);
-			itemmeta.setDisplayName("§0Keeper's Blood");
+            itemmeta.setDisplayName("Keeper's Blood");
 			itemmeta.setLore(Arrays.asList("Keeper's Blood"));
 			itemmeta.addCustomEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 2400, 29), true);
 			itemmeta.addCustomEffect(new PotionEffect(PotionEffectType.SPEED, 2400, 6), true);
@@ -5099,7 +5072,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			item = new ItemStack(Material.LINGERING_POTION);
 			PotionMeta itemmeta = (PotionMeta) item.getItemMeta();
 			itemmeta.setColor(Color.WHITE);
-			itemmeta.setDisplayName("§fShadow Dust");
+            itemmeta.setDisplayName("Shadow Dust");
 			itemmeta.setLore(Arrays.asList("Shadow Dust"));
 			itemmeta.addCustomEffect(new PotionEffect(PotionEffectType.WITHER, 400, 4), true);
 			itemmeta.addCustomEffect(new PotionEffect(PotionEffectType.BLINDNESS, 400, 6), true);
@@ -5111,14 +5084,14 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		else if(choose == 28) {
 			item = new ItemStack(Material.FLINT_AND_STEEL);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§eFlint and Thermite");
+            itemmeta.setDisplayName("Flint and Thermite");
 			itemmeta.setLore(Arrays.asList("Flint and Thermite"));
 			item.setItemMeta(itemmeta);
 		}
 		else if(choose == 29) {
 			item = new ItemStack(Material.PINK_DYE);
 			ItemMeta itemmeta = item.getItemMeta();
-			itemmeta.setDisplayName("§dCute Egg");
+            itemmeta.setDisplayName("Cute Egg");
 			itemmeta.setLore(Arrays.asList("Cute Egg"));
 			item.setItemMeta(itemmeta);
 		}
@@ -5126,7 +5099,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			item = new ItemStack(Material.LEATHER_HELMET);
 			LeatherArmorMeta itemM = (LeatherArmorMeta) item.getItemMeta();
 			itemM.setColor(Color.fromRGB(58, 34, 7));
-			itemM.setDisplayName("§8Linear Device");
+            itemM.setDisplayName("Linear Device");
 			itemM.setLore(Arrays.asList("Linear Device"));
 			item.setItemMeta(itemM);
 		}
