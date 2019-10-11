@@ -1,5 +1,5 @@
 main: survivalpackage.survivalmain
-name: SE
+name: DangerousSurvival
 version: 1.0
 author: Evil_Lootly
 description: Makes survival more engaging.
@@ -9,32 +9,32 @@ commands:
   placeholder:
     description: does whatever it does
     usage: /placeholder
-    permission: survivalmain.placeholder
+    permission: DangerousSurvival.placeholder
     permission-message: You don't have the survivalmain.placeholder permission.
   parkourdivider:
     description: Sets the parkour divider
     usage: /parkourdivider
-    permission: survivalmain.parkourdivider
+    permission: DangerousSurvival.parkourdivider
     permission-message: You don't have the survivalmain.parkourdivider permission.
   parkouradd:
     description: Adds parkour to limbo
     usage: /parkouradd
-    permission: survivalmain.parkouradd
+    permission: DangerousSurvival.parkouradd
     permission-message: You don't have the survivalmain.parkouradd permission.
   rpointp:
     description: Sets region points for deciding boundaries.
     usage: /rpointp
-    permission: survivalmain.rpointp
+    permission: DangerousSurvival.rpointp
     permission-message: You don't have the survivalmain.rpointp permission.
   definerp:
     description: Creates region of arena or spawn with given locations.
     usage: /definerp
-    permission: survivalmain.definerp
+    permission: DangerousSurvival.definerp
     permission-message: You don't have the survivalmain.definerp permission.
   lick:
     description: Mmmm yummy lick.
     usage: /lick
-    permission: survivalmain.lick
+    permission: DangerousSurvival.lick
   radio:
     description: Main radio command.
     usage: /radio

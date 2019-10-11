@@ -1,21 +1,13 @@
 package survivalpackage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import net.md_5.bungee.api.ChatColor;
 
 public class shopGUIS {
 	
@@ -37,7 +29,7 @@ public class shopGUIS {
 		}
 		item.setItemMeta(itemmeta);
 		if(enchanted == true) {
-			item.addUnsafeEnchantment(Enchantment.DURABILITY, 200);
+            item.addUnsafeEnchantment(Enchantment.DURABILITY, 100);
 			ItemMeta itemmeta2 = item.getItemMeta();
 			itemmeta2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			item.setItemMeta(itemmeta2);
