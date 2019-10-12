@@ -5771,7 +5771,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				if(inSpawnRegion(event.getEntity().getLocation())) {
 					return;
 				}
-				event.getEntity().getWorld().strikeLightning(event.getHitBlock().getLocation().add(0, 1, 0));
+				event.getPotion().getWorld().strikeLightning(event.getPotion().getLocation());
 			}
 	}
 	
