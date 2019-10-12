@@ -5830,7 +5830,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		if((e.getEntity() instanceof Player) && ((e.getCause() != DamageCause.ENTITY_ATTACK) && (e.getCause() != DamageCause.ENTITY_SWEEP_ATTACK))) {
 			Player p = (Player) e.getEntity();
 		
-			if(randor.nextInt(15)==1) {
+        	if(randor.nextInt(5)==1) {
 				if(shopGUIS.enabled.get(p.getName()).contains(149)) {
 					e.setCancelled(true);
 					healPlayer(p, 200);
@@ -7614,7 +7614,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				}
 				Vector v = a.getVelocity();
 				if(abilities.contains(88)) {
-					e.setCancelled(true);
+                    //e.setCancelled(true);
 					return;
 				}
 				if(abilities.contains(86)) {
