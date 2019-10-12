@@ -239,6 +239,8 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	
 	int spawndistance = 100;
 	
+	public HashMap<Integer, String> passiveDescriptors = new HashMap<Integer, String>();
+	
     List<String> lickers = new ArrayList<String>();
 	////////////////////////////////////////////////////
 	
@@ -396,6 +398,44 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		}, 0L, 2L);
 
 		doScoreboardThing();
+		
+		//Bow effect descriptors
+		passiveDescriptors.put(103, "shoot 3 arrows at the same time instead of one.");
+		passiveDescriptors.put(104, "shoot 5 arrows at the same time instead of one");
+		passiveDescriptors.put(128, "shoot 7 arrows at the same time instead of one");
+		passiveDescriptors.put(88, "turns your bow into a flame shooting weapon.");
+		passiveDescriptors.put(86, "replaces shot arrows with blaze fire charges instead.");
+		passiveDescriptors.put(87, "every third shot shoots a ghast fireball.");
+		passiveDescriptors.put(122, "every third shot shoots tnt.");
+		passiveDescriptors.put(123, "every fifth shot shoots a dragon's fireball.");
+		passiveDescriptors.put(89, "your arrows travel two times faster than normal.  On landing on a block or entity, strikes multiple lightning strikes and creates a small explosion.");
+		passiveDescriptors.put(84, "your arrows inflict a glowing effect on hit entities.");
+		passiveDescriptors.put(131, "low chance to permantly slow a player down when you shoot them.");
+		passiveDescriptors.put(85, "your arrows set the ground on fire and set mobs on fire.");
+		passiveDescriptors.put(119, "adds a poison effect to your arrows.");
+		passiveDescriptors.put(132, "every shot gives super speed for a second.");
+		passiveDescriptors.put(120, "adds a harming effect to your arrows (damages entities normally healed by harming).");
+		passiveDescriptors.put(121, "adds a slowness effect to your arrows.");
+		passiveDescriptors.put(112, "causes players you shoot to take extra damage by bleeding over time.");
+		passiveDescriptors.put(115, "throws entities you up and into the air.");
+		passiveDescriptors.put(107, "if the enemy hit is wearing leather armor, there is a chance the leather armor will drop when shot.");
+		passiveDescriptors.put(129, "pulls whatever you shoot towards you.");
+		passiveDescriptors.put(95, "regain half a heart on successful arrow hits.");
+		passiveDescriptors.put(133, "regain half a hunger bar on successful arrow hits.");
+		passiveDescriptors.put(97, "when a player is hit by a arrow, steals 1 exp and drops it in the form of a lime dye.  Can be picked up by anyone to reward 1 exp.");
+		passiveDescriptors.put(113, "creates a bouncy slowing slime circle when a block is struck.");
+		passiveDescriptors.put(111, "whereever the arrow you shot hits, it will teleport you to that location.  If a arrow hits a entity, instead teleports that entity in a random block with a radius of 2 blocks.");
+		passiveDescriptors.put(96, "spawns a ball of web where your arrows land.");
+		passiveDescriptors.put(105, "arrows split into multiple other arrows when they collide with something.");
+		passiveDescriptors.put(110, "your arrows you shoot let you travel with them in the air.");
+		passiveDescriptors.put(114, "adds more knockback to the shots you fire.");
+		passiveDescriptors.put(130, "arrows shot within water travel 3x faster than normal arrows.");
+		passiveDescriptors.put(106, "your arrows are spread out.  More of a help when you have 3, 5, or 7 shot.");
+		passiveDescriptors.put(89, "your arrows destroy other arrows in the air when going near them.");
+		passiveDescriptors.put(98, "your arrows have no gravity and travel twice as fast as normal arrows.");
+		passiveDescriptors.put(104, "your arrows rain hail down as they travel through the air.");
+		passiveDescriptors.put(102, "your arrows break the blocks they come in contact with.");
+		passiveDescriptors.put(94, "arrows that hit a player in the head deal 3x the normal ammount of damage unless wearing a helmet.");
 	}
 
 	@Override
@@ -4647,6 +4687,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				int ability = randor.nextInt(218);
 				shopGUIS.enabled.get(p.getName()).add(ability);
 				enabledAbility(ability, p);
+				if(passiveDescriptors.containsKey(ability)) {
+				    p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Until next death, " + passiveDescriptors.get(ability));
+				}
 				saveConfigs();
 			}
 		}
