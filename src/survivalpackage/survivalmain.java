@@ -8757,7 +8757,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		
 		public void fireWalk(Player p, Location l) {
 			if(shopGUIS.enabled.get(p.getName()).contains(148)) {
-				if(isBlockNotSolid(l.getBlock())) {
+				if(isBlockNotSolid(l.getBlock()) && p.isSprinting()) {
 					l.getBlock().setType(Material.FIRE);
 				}
 			}
