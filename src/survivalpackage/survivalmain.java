@@ -8832,150 +8832,150 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			int index = abilitynum;
 			PlayerInventory i = p.getInventory();
 			if(index == 91) {
-			ItemStack bow = shopGUIS.makeItem(Material.BOW.name(), ChatColor.YELLOW + "Sleek Bow", Arrays.asList(ChatColor.GRAY + "A sleek wooden bow."), true);
-			bow.addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 10);
-			bow.addUnsafeEnchantment(Enchantment.DURABILITY, 200);
-			ItemMeta itemmeta = bow.getItemMeta();
-			itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-			bow.setItemMeta(itemmeta);
-			i.setItem(8, bow);
-			i.setItem(7, new ItemStack(Material.ARROW, 1));
+    			ItemStack bow = shopGUIS.makeItem(Material.BOW.name(), ChatColor.YELLOW + "Sleek Bow", Arrays.asList(ChatColor.GRAY + "A sleek wooden bow."), true);
+    			bow.addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 10);
+    			bow.addUnsafeEnchantment(Enchantment.DURABILITY, 200);
+    			ItemMeta itemmeta = bow.getItemMeta();
+    			itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+    			bow.setItemMeta(itemmeta);
+    			p.getWorld().dropItemNaturally(p.getLocation(), bow);
+    			p.getWorld().dropItemNaturally(p.getLocation(), new ItemStack(Material.ARROW, 1));
 			}
 				//swords
 			else if(index == 56) {
-					p.getInventory().setItemInOffHand(new ItemStack(Material.SHIELD));
+			        p.getWorld().dropItemNaturally(p.getLocation(), (new ItemStack(Material.SHIELD)));
 				}
 			else if(index == 55) {
 					ItemStack sword = shopGUIS.makeItem(Material.WOODEN_SWORD.name(), ChatColor.GRAY + "Wooden Sword", Arrays.asList(ChatColor.GRAY + "A dull wooden sword."), true);
-					i.setItem(0, sword);
+					p.getWorld().dropItemNaturally(p.getLocation(), sword);
 				}
 				else if(index == 63) {
 					ItemStack axe = shopGUIS.makeItem(Material.WOODEN_AXE.name(), ChatColor.GRAY + "Wooden Axe", Arrays.asList(ChatColor.GRAY + "A dull wooden axe."), true);
-					i.setItem(0, axe);
+					p.getWorld().dropItemNaturally(p.getLocation(), axe);
 				}
 				else if(index ==64) {
 					ItemStack sword = shopGUIS.makeItem(Material.IRON_SWORD.name(), ChatColor.WHITE + "Iron Sword", Arrays.asList(ChatColor.GRAY + "A sharp iron sword."), true);
-					i.setItem(0, sword);
+					p.getWorld().dropItemNaturally(p.getLocation(), sword);
 				}
 				else if(index ==72) {
 					ItemStack axe = shopGUIS.makeItem(Material.IRON_AXE.name(), ChatColor.WHITE + "Iron Axe", Arrays.asList(ChatColor.GRAY + "A sharp iron axe."), true);
-					i.setItem(0, axe);
+					p.getWorld().dropItemNaturally(p.getLocation(), axe);
 				}
 				else if(index == 73) {
 					ItemStack sword = shopGUIS.makeItem(Material.DIAMOND_SWORD.name(), ChatColor.AQUA + "Diamond Sword", Arrays.asList(ChatColor.GRAY + "The sharpest blade in", ChatColor.GRAY + "the land."), true);
-					i.setItem(0, sword);
+					p.getWorld().dropItemNaturally(p.getLocation(), sword);
 				}
 				else if(index == 81) {
 					ItemStack axe = shopGUIS.makeItem(Material.DIAMOND_AXE.name(), ChatColor.AQUA + "Diamond Axe", Arrays.asList(ChatColor.GRAY + "The sharpest axe in", ChatColor.GRAY + "the land."), true);
-					i.setItem(0, axe);
+					p.getWorld().dropItemNaturally(p.getLocation(), axe);
 				}
 				else if(index == 47) {
 					ItemStack carrot = shopGUIS.makeItem(Material.CARROT.name(), ChatColor.DARK_GREEN + "Infinite Carrot", Arrays.asList(ChatColor.GRAY + "Yummy carrot that never runs out."), false);
-					i.setItem(1, carrot);
+					p.getWorld().dropItemNaturally(p.getLocation(), carrot);
 				}
 				else if(index == 48) {
 					ItemStack melon = shopGUIS.makeItem(Material.MELON.name(), ChatColor.GREEN + "Infinite Melon", Arrays.asList(ChatColor.GRAY + "Yummy melon that never runs out."), false);
-					i.setItem(1, melon);
+					p.getWorld().dropItemNaturally(p.getLocation(), melon);
 				}
 				else if(index == 49) {
 					ItemStack rawbeef = shopGUIS.makeItem(Material.BEEF.name(), ChatColor.RED + "Infinite Beef", Arrays.asList(ChatColor.GRAY + "Yummy beef that never runs out."), false);
-					i.setItem(1, rawbeef);
+					p.getWorld().dropItemNaturally(p.getLocation(), rawbeef);
 				}
 				else if(index == 50) {
 					ItemStack cfish = shopGUIS.makeItem(Material.COOKED_COD.name(), ChatColor.BLUE + "Infinite Fish", Arrays.asList(ChatColor.GRAY + "Yummy fish that never runs out."), false);
-					i.setItem(1, cfish);
+					p.getWorld().dropItemNaturally(p.getLocation(), cfish);
 				}
 				else if(index == 51) {
 					ItemStack cbeef = shopGUIS.makeItem(Material.COOKED_BEEF.name(), ChatColor.DARK_RED + "Infinite Steak", Arrays.asList(ChatColor.GRAY + "Yummy steak that never runs out."), false);
-					i.setItem(1, cbeef);
+					p.getWorld().dropItemNaturally(p.getLocation(), cbeef);
 				}
 				else if(index == 52) {
 					ItemStack msoup = shopGUIS.makeItem(Material.MUSHROOM_STEW.name(), ChatColor.DARK_AQUA + "Infinite Soup", Arrays.asList(ChatColor.GRAY + "Yummy soup that never runs out."), false);
-					i.setItem(1, msoup);
+					p.getWorld().dropItemNaturally(p.getLocation(), msoup);
 				}
 				else if(index == 53) {
 					ItemStack gapple = shopGUIS.makeItem(Material.GOLDEN_APPLE.name(), ChatColor.GOLD + "Infinite Life", Arrays.asList(ChatColor.GRAY + "Yummy golden apple that never runs out."), false);
-					i.setItem(1, gapple);
+					p.getWorld().dropItemNaturally(p.getLocation(), gapple);
 				}
 				else if(index == 1) {
 					ItemStack lhel = shopGUIS.makeItem(Material.LEATHER_HELMET.name(), ChatColor.WHITE + "Leather Hat", Arrays.asList(ChatColor.GRAY + "A simple leather hat."), true);
-					i.setHelmet(lhel);
+					p.getWorld().dropItemNaturally(p.getLocation(), lhel);
 				}
 				else if(index == 2) {
 					ItemStack lchest = shopGUIS.makeItem(Material.LEATHER_CHESTPLATE.name(), ChatColor.WHITE +"Leather Chestplate", Arrays.asList(ChatColor.GRAY + "A simple leather chestplate."), true);
-					i.setChestplate(lchest);
+					p.getWorld().dropItemNaturally(p.getLocation(), lchest);
 				}
 				else if(index == 3) {
 					ItemStack lpant = shopGUIS.makeItem(Material.LEATHER_LEGGINGS.name(), ChatColor.WHITE +"Leather Leggings", Arrays.asList(ChatColor.GRAY + "Simple leather pants."), true);
-					i.setLeggings(lpant);
+					p.getWorld().dropItemNaturally(p.getLocation(), lpant);
 				}
 				else if(index == 4) {
 					ItemStack lboot = shopGUIS.makeItem(Material.LEATHER_BOOTS.name(), ChatColor.WHITE +"Leather Boots", Arrays.asList(ChatColor.GRAY + "Simple leather shoes."), true);
-					i.setBoots(lboot);
+					p.getWorld().dropItemNaturally(p.getLocation(), lboot);
 				}
 				else if(index == 10) {
 					ItemStack lhel = shopGUIS.makeItem(Material.GOLDEN_HELMET.name(), ChatColor.YELLOW + "Golden Hat", Arrays.asList(ChatColor.GRAY + "Sparkly upgrade from the leather hat."), true);
-					i.setHelmet(lhel);
+					p.getWorld().dropItemNaturally(p.getLocation(), lhel);
 				}
 				else if(index == 11) {
 					ItemStack lchest = shopGUIS.makeItem(Material.GOLDEN_CHESTPLATE.name(), ChatColor.YELLOW + "Gold Chestplate", Arrays.asList(ChatColor.GRAY + "Chestplate made from a whole" , ChatColor.GRAY + "20oz golden nugget."), true);
-					i.setChestplate(lchest);
+					p.getWorld().dropItemNaturally(p.getLocation(), lchest);
 				}
 				else if(index == 12) {
 					ItemStack lpant = shopGUIS.makeItem(Material.GOLDEN_LEGGINGS.name(), ChatColor.YELLOW + "Golden Pants", Arrays.asList(ChatColor.GRAY + "Gold pants that make you look skinny."), true);
-					i.setLeggings(lpant);
+					p.getWorld().dropItemNaturally(p.getLocation(), lpant);
 				}
 				else if(index == 13) {
 					ItemStack lboot = shopGUIS.makeItem(Material.GOLDEN_BOOTS.name(), ChatColor.YELLOW + "Gold Boots", Arrays.asList(ChatColor.GRAY + "Cute little golden shoes."), true);
-					i.setBoots(lboot);
+					p.getWorld().dropItemNaturally(p.getLocation(), lboot);
 				}
 				else if(index == 19) {
 					ItemStack lhel = shopGUIS.makeItem(Material.CHAINMAIL_HELMET.name(), ChatColor.DARK_GRAY + "Chainmail Hat", Arrays.asList(ChatColor.GRAY + "Strangely Efficient, even with", ChatColor.GRAY + "so many holes."), true);
-					i.setHelmet(lhel);
+					p.getWorld().dropItemNaturally(p.getLocation(), lhel);
 				}
 				else if(index == 20) {
 					ItemStack lchest = shopGUIS.makeItem(Material.CHAINMAIL_CHESTPLATE.name(), ChatColor.DARK_GRAY + "Chainmail Chestplate", Arrays.asList(ChatColor.GRAY + "Chainy Chestplate."), true);
-					i.setChestplate(lchest);
+					p.getWorld().dropItemNaturally(p.getLocation(), lchest);
 				}
 				else if(index == 21) {
 					ItemStack lpant = shopGUIS.makeItem(Material.CHAINMAIL_LEGGINGS.name(), ChatColor.DARK_GRAY + "Chainmail Pants", Arrays.asList(ChatColor.GRAY + "Not recommended for sneaking."), true);
-					i.setLeggings(lpant);
+					p.getWorld().dropItemNaturally(p.getLocation(), lpant);
 				}
 				else if(index == 22) {
 					ItemStack lboot = shopGUIS.makeItem(Material.CHAINMAIL_BOOTS.name(), ChatColor.DARK_GRAY + "Chainmail Boots", Arrays.asList(ChatColor.GRAY + "Not water-proof."), true);
-					i.setBoots(lboot);
+					p.getWorld().dropItemNaturally(p.getLocation(), lboot);
 				}
 				else if(index == 28) {
 					ItemStack lhel = shopGUIS.makeItem(Material.IRON_HELMET.name(), ChatColor.GRAY + "Iron Hat", Arrays.asList(ChatColor.GRAY + "Hat made from an iron fence."), true);
-					i.setHelmet(lhel);
+					p.getWorld().dropItemNaturally(p.getLocation(), lhel);
 				}
 				else if(index == 29) {
 					ItemStack lchest = shopGUIS.makeItem(Material.IRON_CHESTPLATE.name(), ChatColor.GRAY + "Iron Chestplate", Arrays.asList(ChatColor.GRAY + "How do you even move in here?"), true);
-					i.setChestplate(lchest);
+					p.getWorld().dropItemNaturally(p.getLocation(), lchest);
 				}
 				else if(index == 30) {
 					ItemStack lpant = shopGUIS.makeItem(Material.IRON_LEGGINGS.name(), ChatColor.GRAY + "Iron Pants", Arrays.asList(ChatColor.GRAY + "Really heavy but oh well."), true);
-					i.setLeggings(lpant);
+					p.getWorld().dropItemNaturally(p.getLocation(), lpant);
 				}
 				else if(index == 31) {
 					ItemStack lboot = shopGUIS.makeItem(Material.IRON_BOOTS.name(), ChatColor.GRAY + "Iron Boots", Arrays.asList(ChatColor.GRAY + "Really waterproof."), true);
-					i.setBoots(lboot);
+					p.getWorld().dropItemNaturally(p.getLocation(), lboot);
 				}
 				else if(index == 37) {
 					ItemStack lhel = shopGUIS.makeItem(Material.DIAMOND_HELMET.name(), ChatColor.AQUA + "Diamond Hat", Arrays.asList(ChatColor.GRAY + "Cute aqua hat for not dying."), true);
-					i.setHelmet(lhel);
+					p.getWorld().dropItemNaturally(p.getLocation(), lhel);
 				}
 				else if(index == 38) {
 					ItemStack lchest = shopGUIS.makeItem(Material.DIAMOND_CHESTPLATE.name(), ChatColor.AQUA + "Diamond Chestplate", Arrays.asList(ChatColor.GRAY + "OoOooOo, sparkly."), true);
-					i.setChestplate(lchest);
+					p.getWorld().dropItemNaturally(p.getLocation(), lchest);
 				}
 				else if(index == 39) {
 					ItemStack lpant = shopGUIS.makeItem(Material.DIAMOND_LEGGINGS.name(), ChatColor.AQUA + "Diamond Pants", Arrays.asList(ChatColor.GRAY + "Best pants in the country."), true);
-					i.setLeggings(lpant);
+					p.getWorld().dropItemNaturally(p.getLocation(), lpant);
 				}
 				else if(index == 40) {
 					ItemStack lboot = shopGUIS.makeItem(Material.DIAMOND_BOOTS.name(), ChatColor.AQUA + "Diamond Boots", Arrays.asList(ChatColor.GRAY + "Also waterproof."), true);
-					i.setBoots(lboot);
+					p.getWorld().dropItemNaturally(p.getLocation(), lboot);
 				}
 				else if(index == 5) {
 					p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999, 0, false, false, false));
@@ -8988,7 +8988,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				}
 				else if(index == 138) {
 					ItemStack lchest = shopGUIS.makeItem(Material.ELYTRA.name(), ChatColor.YELLOW + "Wings of The Nephilim", Arrays.asList(ChatColor.GRAY + "Stolen but useful."), true);
-					i.setChestplate(lchest);
+					p.getWorld().dropItemNaturally(p.getLocation(), lchest);
 				}
 		}
 	
