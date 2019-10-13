@@ -1192,9 +1192,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				}
 			}
 			if(abilities.contains(156)) {
-				if(p.getHealth() < 6) {
-					initialDamage = initialDamage / 10.0;
-				}
+				initialDamage = initialDamage / 10.0;
 			}
 		}
 		
