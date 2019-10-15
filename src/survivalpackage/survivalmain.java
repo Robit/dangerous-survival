@@ -4776,7 +4776,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			item = new ItemStack(Material.LEATHER_BOOTS);
 			LeatherArmorMeta itemM = (LeatherArmorMeta) item.getItemMeta();
 			itemM.setColor(Color.fromRGB(0, 0, 0));
-            itemM.setDisplayName("Boots of Beserk");
+            itemM.setDisplayName("Boots of Assassin");
 			itemM.setLore(Arrays.asList("Hide in the Dark but Die in the Light"));
 			item.setItemMeta(itemM);
 		}
