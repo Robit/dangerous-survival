@@ -5566,30 +5566,30 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 							}
 							if(hasLore(it, "Molten Core Level: 3")) {
 								((LivingEntity) event.getEntity()).setFireTicks(140);
-								if(randor.nextInt(2)==1) {
+								if(randor.nextInt(2)==1 && isAir(((LivingEntity) event.getEntity()).getLocation().getBlock().getType())) {
 									((LivingEntity) event.getEntity()).getLocation().getBlock().setType(Material.FIRE);
 								}
-								if(randor.nextInt(100)==1) {
-									((LivingEntity) event.getEntity()).getLocation().getBlock().setType(Material.LAVA);
-								}
+								//if(randor.nextInt(100)==1) {
+									//((LivingEntity) event.getEntity()).getLocation().getBlock().setType(Material.LAVA);
+								//}
 							}
 							if(hasLore(it, "Molten Core Level: 2")) {
 								((LivingEntity) event.getEntity()).setFireTicks(70);
-								if(randor.nextInt(4)==1) {
+								if(randor.nextInt(4)==1 && isAir(((LivingEntity) event.getEntity()).getLocation().getBlock().getType())) {
 									((LivingEntity) event.getEntity()).getLocation().getBlock().setType(Material.FIRE);
 								}
-								if(randor.nextInt(200)==1) {
-									((LivingEntity) event.getEntity()).getLocation().getBlock().setType(Material.LAVA);
-								}
+								//if(randor.nextInt(200)==1) {
+									//((LivingEntity) event.getEntity()).getLocation().getBlock().setType(Material.LAVA);
+								//}
 							}
 							if(hasLore(it, "Molten Core Level: 1")) {
 								((LivingEntity) event.getEntity()).setFireTicks(40);
-								if(randor.nextInt(8)==1) {
+								if(randor.nextInt(8)==1 && isAir(((LivingEntity) event.getEntity()).getLocation().getBlock().getType())) {
 									((LivingEntity) event.getEntity()).getLocation().getBlock().setType(Material.FIRE);
 								}
-								if(randor.nextInt(300)==1) {
-									((LivingEntity) event.getEntity()).getLocation().getBlock().setType(Material.LAVA);
-								}
+								//if(randor.nextInt(300)==1) {
+									//((LivingEntity) event.getEntity()).getLocation().getBlock().setType(Material.LAVA);
+								//}
 							}
 							if(hasLore(it, "Theif Talisman Level: 2")) {
 								if(randor.nextInt(20)==1) {
