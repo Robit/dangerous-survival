@@ -5547,7 +5547,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 							if(hasLore(it, "Quicksand Talisman")) {
 								if(randor.nextInt(6)==1) {
 									((LivingEntity) event.getEntity()).addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 140, 1));
-									event.getEntity().getLocation().subtract(0, 1, 0).getBlock().setType(Material.SAND);
+									//event.getEntity().getLocation().subtract(0, 1, 0).getBlock().setType(Material.SAND);
 								}
 							}
 							if(hasLore(it, "Lifesteal Talisman")) {
@@ -7909,10 +7909,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 						Block b = e.getHitBlock();
 						b.getWorld().playSound(b.getLocation(), bs.getBreakSound(b.getType()+""), 1, 1);
 						Material mtype = b.getType();
-						b.setType(Material.AIR);
-						for(int count = 0; count < 30; count++) {
-							b.getWorld().spawnParticle(Particle.BLOCK_CRACK, ((double) b.getX())+(randor.nextInt(100)/100.0), ((double) b.getY())+(randor.nextInt(100)/100.0), ((double) b.getZ())+(randor.nextInt(100)/100.0), 1, new MaterialData(mtype));
-						}
+						//for(int count = 0; count < 30; count++) {
+						//	b.getWorld().spawnParticle(Particle.BLOCK_CRACK, ((double) b.getX())+(randor.nextInt(100)/100.0), ((double) b.getY())+(randor.nextInt(100)/100.0), ((double) b.getZ())+(randor.nextInt(100)/100.0), 1, new MaterialData(mtype));
+						//}
 						deletearrow = true;
 					}
 					if(a.hasMetadata("89")) {
