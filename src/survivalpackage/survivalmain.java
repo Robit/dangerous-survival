@@ -126,7 +126,6 @@ import org.bukkit.loot.LootContext;
 import org.bukkit.loot.LootContext.Builder;
 import org.bukkit.loot.LootTable;
 import org.bukkit.loot.Lootable;
-import org.bukkit.material.MaterialData;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
@@ -145,6 +144,7 @@ import org.bukkit.util.EulerAngle;
 import org.bukkit.util.Vector;
 
 import net.md_5.bungee.api.chat.TextComponent;
+
 
 public class survivalmain extends JavaPlugin implements Listener, CommandExecutor{
 
@@ -1172,7 +1172,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		}
 		double initialDamage = ammount;
 		if(!type.equals("deal")) {
-		double health = p.getHealth();
 		
 		//Remove Damage Based On Armor / Abilities
 		if(!type.equals("final")) {
@@ -2908,7 +2907,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		if(worlds.contains(e.getBlock().getWorld().getName()) && cropsE) {
 		Material m = e.getBlock().getType();
 		if(m == Material.WHEAT || m == Material.POTATOES || m == Material.CARROTS || m == Material.BEETROOTS) {
-			int growA = getCropsGrowAmmount(e.getBlock().getLocation());
 			if(randor.nextInt(4)!=0) {
 				e.setCancelled(true);
 			}
@@ -2979,7 +2977,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		}
 	}
 	
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onPlayerClickInInventory(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
@@ -3294,7 +3291,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		return copy;
 	}
 	
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onPlayerClickInAnvil(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
@@ -3541,7 +3537,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
     }
     
     public Location getSafeToSpawn(Location l, boolean newL) {
-    	Location top = null;
     	if(safeToSpawn(l)) {
     		return l;
     	}
@@ -4035,7 +4030,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	public void playerShootBow(EntityShootBowEvent e) {
     	if(worlds.contains(e.getEntity().getWorld().getName()) && potionE) {
 		if(e.getEntity() instanceof Player) {
-			Player p = (Player) e.getEntity();
 			Projectile a = (Projectile) e.getProjectile();
 			if(e.getBow().hasItemMeta()) {
 				if(e.getBow().getItemMeta().hasLore()) {
@@ -4421,7 +4415,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
     	return name;
     }
 	
-	@SuppressWarnings("deprecation")
+	
 	@EventHandler
 	public void onPlayerClickInAnvilPotion(InventoryClickEvent e) {
 		Player p = (Player) e.getWhoClicked();
@@ -6856,9 +6850,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			int points = 110;
 		    double radius = 0.5;
 		    double step = 0;
-		    int numSteps = 15;
 
-		    double speed = 0;
 		    if (step == 0) {
 		       for (int i = 0; i < points; i++) {
 		           double dx = Math.cos(Math.PI * 8 * ((double)i / points)) * radius;
@@ -6961,6 +6953,21 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			arrowEffectsF();
 			swordEffectsF();
 		}
+		
+	    public void onHit(EntityDamageEvent event){
+	        if (event.getEntity() instanceof Player){
+	            for(int i = 0; i < ability8.size(); i++)
+	            {
+	            	if(ability8.get(i) != null && ability8.get(i).equals((Player) event.getEntity()))
+	            	{
+	            		Player p = ability8.get(i);
+	            		ability8.remove(i);
+	            		Bukkit.getScheduler().runTaskLater(this, () -> ability8.add(p), 600);
+	            		return;
+	            	}
+	            }
+	        }
+	    }
 		
 		public void effectLooper() {
 			arrowEffects();
@@ -7072,8 +7079,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 							as.setHeadPose(new EulerAngle(Math.toRadians(randor.nextInt(360)+1) + ea.getX(), Math.toRadians(randor.nextInt(360)+1) + ea.getY(), Math.toRadians(randor.nextInt(360)+1) + ea.getZ()));
 						}
 						
-					}
-					else {
 					}
 				}
 				//check around player for enemies
@@ -7908,7 +7913,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					if(a.hasMetadata("102")) {
 						Block b = e.getHitBlock();
 						b.getWorld().playSound(b.getLocation(), bs.getBreakSound(b.getType()+""), 1, 1);
-						Material mtype = b.getType();
 						//for(int count = 0; count < 30; count++) {
 						//	b.getWorld().spawnParticle(Particle.BLOCK_CRACK, ((double) b.getX())+(randor.nextInt(100)/100.0), ((double) b.getY())+(randor.nextInt(100)/100.0), ((double) b.getZ())+(randor.nextInt(100)/100.0), 1, new MaterialData(mtype));
 						//}
@@ -7917,7 +7921,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					if(a.hasMetadata("89")) {
 						Location start = a.getLocation().clone();
 						a.getWorld().strikeLightning(start);
-						HashMap<Integer, List<Block>> empty = new HashMap<Integer, List<Block>>();
 						for(int count = 0; count < 10; count++) {
 						Location end = getRandLoc(start.clone(), 1);
 						double step = 0.05D;
@@ -8175,7 +8178,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					if(a.hasMetadata("89")) {
 						Location start = le.getLocation().clone();
 						a.getWorld().strikeLightning(start);
-						HashMap<Integer, List<Block>> empty = new HashMap<Integer, List<Block>>();
 						for(int count = 0; count < 10; count++) {
 						Location end = getRandLoc(start.clone(), 1);
 						double step = 0.05D;
@@ -8829,7 +8831,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		
 		public void resetInventory(int abilitynum, Player p) {
 			int index = abilitynum;
-			PlayerInventory i = p.getInventory();
 			if(index == 91) {
     			ItemStack bow = shopGUIS.makeItem(Material.BOW.name(), ChatColor.YELLOW + "Sleek Bow", Arrays.asList(ChatColor.GRAY + "A sleek wooden bow."), true);
     			bow.addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 10);
