@@ -330,8 +330,8 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		larry = w.spawnEntity(w.getSpawnLocation(), EntityType.LLAMA).getUniqueId().toString();
 		Bukkit.getEntity(UUID.fromString(larry)).setInvulnerable(true);
 		((Llama) Bukkit.getEntity(UUID.fromString(larry))).setRemoveWhenFarAway(false);
-		addPotionEffectBetter(((Llama) Bukkit.getEntity(UUID.fromString(larry))), PotionEffectType.SLOW, 999999, 150, false, false, false);
-        addPotionEffectBetter(((Llama) Bukkit.getEntity(UUID.fromString(larry))), PotionEffectType.INVISIBILITY, 999999, 150, false, false, false);
+		addPotionEffectBetter(((Llama) Bukkit.getEntity(UUID.fromString(larry))), PotionEffectType.SLOW, 99999999, 150, false, false, false);
+        addPotionEffectBetter(((Llama) Bukkit.getEntity(UUID.fromString(larry))), PotionEffectType.INVISIBILITY, 99999999, 150, false, false, false);
 		bs = new blockSounds();
 		spawndistance = config.getInt("Spawn Radius ");
 		addToWhitelist();
@@ -1384,6 +1384,15 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			else if(isAir(m) || m == Material.WATER || m == Material.LAVA){
 				return true;
 			}
+		}
+		return false;
+	}
+	
+	public boolean isWater(Location l, boolean justair) {
+		Block b = l.getBlock();
+		if(b != null) {
+			Material m = b.getType();
+			return m == Material.WATER;
 		}
 		return false;
 	}
@@ -6627,6 +6636,10 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				if(shopGUIS.enabled.get(p.getName()).contains(36)) {
 					doShockWave(p);
 				}
+			}
+			if(isWater(e.getPlayer().getLocation()), false)
+			{
+				
 			}
 			doSneakP(p);
 		}
