@@ -5865,7 +5865,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		if((e.getEntity() instanceof Player) && ((e.getCause() != DamageCause.ENTITY_ATTACK) && (e.getCause() != DamageCause.ENTITY_SWEEP_ATTACK))) {
 			Player p = (Player) e.getEntity();
 		
-        	if(randor.nextInt(5)==1) {
+        	if(randor.nextInt(3)==1) {
 				if(shopGUIS.enabled.get(p.getName()).contains(149)) {
 					e.setCancelled(true);
 					healPlayer(p, 200);
@@ -6665,7 +6665,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	    }
 		
 		@EventHandler
-		public void onFireAndLavaDamage(EntityDamageEvent e) {
+		public void onEntityDamage(EntityDamageEvent e) {
 			if(e.getEntity() instanceof Player) {
 				Player p = (Player) e.getEntity();
 				if(shopGUIS.enabled.get(p.getName()).contains(14)){
