@@ -5830,6 +5830,10 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	    if(entity.getKiller() != null) {
 	         ItemStack its = ((Player) entity.getKiller()).getInventory().getChestplate();
 	 				Player p = (Player) entity.getKiller();
+			    	if(shopGUIS.enabled.get(p.getName()).contains(144))
+			    	{
+			    		event.setDroppedExp(event.getDroppedExp() * 2);
+			    	}
 	 				if(hasLore(its, "Nano-Tech Armor Level: 3")) {
 	 					p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2400, 4));
 	 				}
