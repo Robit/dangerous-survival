@@ -475,6 +475,13 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		passiveDescriptors.put(158, "small chance to disarm an opponent if attacking them from behind.  Monsters drop weapons while players have their offhand and mainhand switched with eachother.");
 		passiveDescriptors.put(33, "if headshots are enabled, headshots deal no damage.");
 		passiveDescriptors.put(25, "if headshots are enabled, headshots deal only half damage");
+		passiveDescriptors.put(47, "Infinite food!");
+		passiveDescriptors.put(48, "Infinite food!");
+		passiveDescriptors.put(49, "Infinite food!");
+		passiveDescriptors.put(50, "Infinite food!");
+		passiveDescriptors.put(51, "Infinite food!");
+		passiveDescriptors.put(52, "Infinite food!");
+		passiveDescriptors.put(53, "you gain an infinitely edible golden apple. However, unlike the other infinite foods, this one is linked to your soul and loses its power on your death. Treasure it.");
 	}
 
 	@Override
@@ -7221,7 +7228,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 						Bukkit.getScheduler().runTaskLater(this, () -> p.getInventory().setItemInMainHand(carrot), 5);
 					}
 					else if(displayname.equals(ChatColor.GREEN + "Infinite Melon")) {
-						ItemStack melon = shopGUIS.makeItem(Material.MELON.name(), ChatColor.GREEN + "Infinite Melon", Arrays.asList(ChatColor.GRAY + "Yummy melon that never runs out."), false);
+						ItemStack melon = shopGUIS.makeItem(Material.MELON_SLICE.name(), ChatColor.GREEN + "Infinite Melon", Arrays.asList(ChatColor.GRAY + "Yummy melon that never runs out."), false);
 						Bukkit.getScheduler().runTaskLater(this, () -> p.getInventory().setItemInMainHand(melon), 5);
 					}
 					else if(displayname.equals(ChatColor.RED + "Infinite Beef")) {
@@ -8936,7 +8943,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					p.getWorld().dropItemNaturally(p.getLocation(), carrot);
 				}
 				else if(index == 48) {
-					ItemStack melon = shopGUIS.makeItem(Material.MELON.name(), ChatColor.GREEN + "Infinite Melon", Arrays.asList(ChatColor.GRAY + "Yummy melon that never runs out."), false);
+					ItemStack melon = shopGUIS.makeItem(Material.MELON_SLICE.name(), ChatColor.GREEN + "Infinite Melon", Arrays.asList(ChatColor.GRAY + "Yummy melon that never runs out."), false);
 					p.getWorld().dropItemNaturally(p.getLocation(), melon);
 				}
 				else if(index == 49) {
@@ -8958,7 +8965,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				else if(index == 53) {
 					ItemStack gapple = shopGUIS.makeItem(Material.GOLDEN_APPLE.name(), ChatColor.GOLD + "Infinite Life", Arrays.asList(ChatColor.GRAY + "Yummy golden apple that never* runs out."), false);
 					p.getWorld().dropItemNaturally(p.getLocation(), gapple);
-					p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You gain an infinitely edible golden apple. However, unlike the other infinite foods, this one is linked to your soul and loses its power on your death. Treasure it.");
 				}
 				else if(index == 1) {
 					ItemStack lhel = shopGUIS.makeItem(Material.LEATHER_HELMET.name(), ChatColor.WHITE + "Leather Hat", Arrays.asList(ChatColor.GRAY + "A simple leather hat."), true);
