@@ -29,9 +29,8 @@ public class shopGUIS {
 		}
 		item.setItemMeta(itemmeta);
 		if(enchanted == true) {
-            item.addUnsafeEnchantment(Enchantment.DURABILITY, 100);
 			ItemMeta itemmeta2 = item.getItemMeta();
-			itemmeta2.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+			itemmeta2.setUnbreakable(true);;
 			item.setItemMeta(itemmeta2);
 		}
 		return item;
