@@ -4773,7 +4773,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
                 itemmeta.setDisplayName("Pulling Device");
 				itemmeta.setLore(Arrays.asList("Pulling Device Level: 3"));
 				itemmeta.addEnchant(Enchantment.LURE, 1, false);
-				itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
+				itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				item.setItemMeta(itemmeta);
 			} 
 			else if (randor.nextInt(3) == 1) {
@@ -4782,7 +4782,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
                 itemmeta.setDisplayName("Pulling Device");
 				itemmeta.setLore(Arrays.asList("Pulling Device Level: 2"));
 				itemmeta.addEnchant(Enchantment.LURE, 1, false);
-				itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
+				itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				item.setItemMeta(itemmeta);
 			} 
 			else {
@@ -4791,7 +4791,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
                 itemmeta.setDisplayName("Pulling Device");
 				itemmeta.setLore(Arrays.asList("Pulling Device Level: 1"));
 				itemmeta.addEnchant(Enchantment.LURE, 1, false);
-				itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
+				itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				item.setItemMeta(itemmeta);
 			}
 		}
@@ -4973,7 +4973,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
             potionMeta.setDisplayName("Lightning Bottle");
 			potionMeta.setLore(Arrays.asList("Lightning Bottle"));
 			potionMeta.addEnchant(Enchantment.LURE, 1, false);
-			potionMeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
+			potionMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			item.setItemMeta(potionMeta);
 		}
 		else if(choose == 13) {
@@ -5043,7 +5043,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
                 itemmeta.setDisplayName("Compressed Fireball");
 				itemmeta.setLore(Arrays.asList("Compressed Fireball Level: 3"));
 				itemmeta.addEnchant(Enchantment.LURE, 1, false);
-				itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
+				itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				item.setItemMeta(itemmeta);
 			} 
 			else if (randor.nextInt(3) == 1) {
@@ -5052,7 +5052,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
                 itemmeta.setDisplayName("Compressed Fireball");
 				itemmeta.setLore(Arrays.asList("Compressed Fireball Level: 2"));
 				itemmeta.addEnchant(Enchantment.LURE, 1, false);
-				itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
+				itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				item.setItemMeta(itemmeta);
 				} 
 			else {
@@ -5061,7 +5061,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
                 itemmeta.setDisplayName("Compressed Fireball");
 					itemmeta.setLore(Arrays.asList("Compressed Fireball Level: 1"));
 					itemmeta.addEnchant(Enchantment.LURE, 1, false);
-					itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
+					itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 					item.setItemMeta(itemmeta);
 					
 			}
@@ -5136,7 +5136,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
             itemmeta.setDisplayName("Goddess Tear");
 			itemmeta.setLore(Arrays.asList("Goddess Tear"));
 			itemmeta.addEnchant(Enchantment.LURE, 1, false);
-			itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
+			itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			item.setItemMeta(itemmeta);
 		}
 		else if(choose == 22) {
@@ -5145,7 +5145,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
             itemmeta.setDisplayName("Beserk Tear");
 			itemmeta.setLore(Arrays.asList("Beserk Tear"));
 			itemmeta.addEnchant(Enchantment.LURE, 1, false);
-			itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
+			itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			item.setItemMeta(itemmeta);
 		}
 		else if(choose == 23) {
@@ -5154,7 +5154,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
             itemmeta.setDisplayName("Screamer Talisman");
 			itemmeta.setLore(Arrays.asList("Screamer Talisman"));
 			itemmeta.addEnchant(Enchantment.LURE, 1, false);
-			itemmeta.hasItemFlag(ItemFlag.HIDE_ENCHANTS);
+			itemmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			item.setItemMeta(itemmeta);
 		}
 		else if(choose == 24) {
