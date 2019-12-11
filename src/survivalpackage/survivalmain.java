@@ -7727,11 +7727,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					a = p.launchProjectile(Arrow.class);
 					((Arrow) a).setPickupStatus(org.bukkit.entity.AbstractArrow.PickupStatus.DISALLOWED);
 				}
-				Vector v = a.getVelocity();
-				if(abilities.contains(88)) {
-                    //e.setCancelled(true);
-					return;
-				}
+				Vector v = a.getVelocity();  
 				if(abilities.contains(86)) {
 					e.setCancelled(true);
 					Entity a2 = p.launchProjectile(SmallFireball.class);
