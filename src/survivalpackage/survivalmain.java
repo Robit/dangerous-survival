@@ -7216,32 +7216,32 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 						ItemStack milk = shopGUIS.makeItem(Material.MILK_BUCKET.name(), ChatColor.WHITE + "Infinite Milk", Arrays.asList(""), false);
 						Bukkit.getScheduler().runTaskLater(this, () -> p.getInventory().setItemInMainHand(milk), 5);
 					}
-					else if(displayname.equals(ChatColor.DARK_GREEN + "Infinite Carrot") && shopGUIS.enabled.get(p.getName()).contains(47)) {
+					else if(displayname.equals(ChatColor.DARK_GREEN + "Infinite Carrot")) {
 						ItemStack carrot = shopGUIS.makeItem(Material.CARROT.name(), ChatColor.DARK_GREEN + "Infinite Carrot", Arrays.asList(ChatColor.GRAY + "Yummy carrot that never runs out."), false);
 						Bukkit.getScheduler().runTaskLater(this, () -> p.getInventory().setItemInMainHand(carrot), 5);
 					}
-					else if(displayname.equals(ChatColor.GREEN + "Infinite Melon") && shopGUIS.enabled.get(p.getName()).contains(48)) {
+					else if(displayname.equals(ChatColor.GREEN + "Infinite Melon")) {
 						ItemStack melon = shopGUIS.makeItem(Material.MELON.name(), ChatColor.GREEN + "Infinite Melon", Arrays.asList(ChatColor.GRAY + "Yummy melon that never runs out."), false);
 						Bukkit.getScheduler().runTaskLater(this, () -> p.getInventory().setItemInMainHand(melon), 5);
 					}
-					else if(displayname.equals(ChatColor.RED + "Infinite Beef") && shopGUIS.enabled.get(p.getName()).contains(49)) {
+					else if(displayname.equals(ChatColor.RED + "Infinite Beef")) {
 						ItemStack rawbeef = shopGUIS.makeItem(Material.BEEF.name(), ChatColor.RED + "Infinite Beef", Arrays.asList(ChatColor.GRAY + "Yummy beef that never runs out."), false);
 						Bukkit.getScheduler().runTaskLater(this, () -> p.getInventory().setItemInMainHand(rawbeef), 5);
 					}
-					else if(displayname.equals(ChatColor.BLUE + "Infinite Fish") && shopGUIS.enabled.get(p.getName()).contains(50)) {
+					else if(displayname.equals(ChatColor.BLUE + "Infinite Fish")) {
 						ItemStack cfish = shopGUIS.makeItem(Material.COOKED_COD.name(), ChatColor.BLUE + "Infinite Fish", Arrays.asList(ChatColor.GRAY + "Yummy fish that never runs out."), false);
 						Bukkit.getScheduler().runTaskLater(this, () -> p.getInventory().setItemInMainHand(cfish), 5);
 					}
-					else if(displayname.equals(ChatColor.DARK_RED + "Infinite Steak") && shopGUIS.enabled.get(p.getName()).contains(51)) {
+					else if(displayname.equals(ChatColor.DARK_RED + "Infinite Steak")) {
 						ItemStack cbeef = shopGUIS.makeItem(Material.COOKED_BEEF.name(), ChatColor.DARK_RED + "Infinite Steak", Arrays.asList(ChatColor.GRAY + "Yummy steak that never runs out."), false);
 						Bukkit.getScheduler().runTaskLater(this, () -> p.getInventory().setItemInMainHand(cbeef), 5);
 					}
-					else if(displayname.equals(ChatColor.DARK_AQUA + "Infinite Soup") && shopGUIS.enabled.get(p.getName()).contains(52)) {
+					else if(displayname.equals(ChatColor.DARK_AQUA + "Infinite Soup")) {
 						ItemStack msoup = shopGUIS.makeItem(Material.MUSHROOM_STEW.name(), ChatColor.DARK_AQUA + "Infinite Soup", Arrays.asList(ChatColor.GRAY + "Yummy soup that never runs out."), false);
 						Bukkit.getScheduler().runTaskLater(this, () -> p.getInventory().setItemInMainHand(msoup), 5);
 					}
 					else if(displayname.equals(ChatColor.GOLD + "Infinite Life") && shopGUIS.enabled.get(p.getName()).contains(53)) {
-						ItemStack gapple = shopGUIS.makeItem(Material.GOLDEN_APPLE.name(), ChatColor.GOLD + "Infinite Life", Arrays.asList(ChatColor.GRAY + "Yummy golden apple that never runs out."), false);
+						ItemStack gapple = shopGUIS.makeItem(Material.GOLDEN_APPLE.name(), ChatColor.GOLD + "Infinite Life", Arrays.asList(ChatColor.GRAY + "Yummy golden apple that never* runs out."), false);
 						Bukkit.getScheduler().runTaskLater(this, () -> p.getInventory().setItemInMainHand(gapple), 5);
 					}
 				}
@@ -8956,8 +8956,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					p.getWorld().dropItemNaturally(p.getLocation(), msoup);
 				}
 				else if(index == 53) {
-					ItemStack gapple = shopGUIS.makeItem(Material.GOLDEN_APPLE.name(), ChatColor.GOLD + "Infinite Life", Arrays.asList(ChatColor.GRAY + "Yummy golden apple that never runs out."), false);
+					ItemStack gapple = shopGUIS.makeItem(Material.GOLDEN_APPLE.name(), ChatColor.GOLD + "Infinite Life", Arrays.asList(ChatColor.GRAY + "Yummy golden apple that never* runs out."), false);
 					p.getWorld().dropItemNaturally(p.getLocation(), gapple);
+					p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You gain an infinitely edible golden apple. However, unlike the other infinite foods, this one is linked to your soul and loses its power on your death. Treasure it.");
 				}
 				else if(index == 1) {
 					ItemStack lhel = shopGUIS.makeItem(Material.LEATHER_HELMET.name(), ChatColor.WHITE + "Leather Hat", Arrays.asList(ChatColor.GRAY + "A simple leather hat."), true);
