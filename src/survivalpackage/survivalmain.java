@@ -403,22 +403,22 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		passiveDescriptors.put(103, "shoot 3 arrows at the same time instead of one.");
 		passiveDescriptors.put(104, "shoot 5 arrows at the same time instead of one");
 		passiveDescriptors.put(128, "shoot 7 arrows at the same time instead of one");
-		passiveDescriptors.put(88, "turns your bow into a flame shooting weapon.");
-		passiveDescriptors.put(86, "replaces shot arrows with blaze fire charges instead.");
+		passiveDescriptors.put(88, "your bow is a flame shooting weapon.");
+		passiveDescriptors.put(86, "shot arrows are blaze fire charges instead.");
 		passiveDescriptors.put(87, "every third shot shoots a ghast fireball.");
 		passiveDescriptors.put(122, "every third shot shoots tnt.");
 		passiveDescriptors.put(123, "every fifth shot shoots a dragon's fireball.");
 		passiveDescriptors.put(89, "your arrows travel two times faster than normal.  On landing on a block or entity, strikes multiple lightning strikes and creates a small explosion.");
 		passiveDescriptors.put(84, "your arrows inflict a glowing effect on hit entities.");
-		passiveDescriptors.put(131, "low chance to permantly slow a player down when you shoot them.");
+		passiveDescriptors.put(131, "you have a low chance to permantly slow a player down when you shoot them.");
 		passiveDescriptors.put(85, "your arrows set the ground on fire and set mobs on fire.");
-		passiveDescriptors.put(119, "adds a poison effect to your arrows.");
+		passiveDescriptors.put(119, "your arrows deal poison.");
 		passiveDescriptors.put(132, "every shot gives super speed for a second.");
-		passiveDescriptors.put(120, "adds a harming effect to your arrows (damages entities normally healed by harming).");
-		passiveDescriptors.put(121, "adds a slowness effect to your arrows.");
-		passiveDescriptors.put(112, "causes players you shoot to take extra damage by bleeding over time.");
-		passiveDescriptors.put(115, "throws entities you up and into the air.");
-		passiveDescriptors.put(107, "if the enemy hit is wearing leather armor, there is a chance the leather armor will drop when shot.");
+		passiveDescriptors.put(120, "your arrows deal harming (also damaging entities normally healed by harming).");
+		passiveDescriptors.put(121, "your arrows deal slowness.");
+		passiveDescriptors.put(112, "your shots cause players to bleed over time.");
+		passiveDescriptors.put(115, "your shots throw entities up and into the air.");
+		passiveDescriptors.put(107, "there is a chance your arrows will cause the leather armor to drop when shot.");
 		passiveDescriptors.put(129, "pulls whatever you shoot towards you.");
 		passiveDescriptors.put(95, "regain half a heart on successful arrow hits.");
 		passiveDescriptors.put(133, "regain half a hunger bar on successful arrow hits.");
@@ -436,6 +436,45 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		passiveDescriptors.put(104, "your arrows rain hail down as they travel through the air.");
 		passiveDescriptors.put(102, "your arrows break the blocks they come in contact with.");
 		passiveDescriptors.put(94, "arrows that hit a player in the head deal 3x the normal ammount of damage unless wearing a helmet.");
+		passiveDescriptors.put(5, "your average speed is increased.");
+		passiveDescriptors.put(6, "you have a chance to dodge incoming attacks.");
+		passiveDescriptors.put(7, "you have a chance to damage attackers when they damage you.");
+		passiveDescriptors.put(8, "your health regenerates faster when not damaged in the last minute.");
+		passiveDescriptors.put(9, "you have a chance to set an attacker on fire when they attack you.");
+		passiveDescriptors.put(14, "you are immune to fire and lava.");
+		passiveDescriptors.put(15, "you have night vision in the dark.");
+		passiveDescriptors.put(16, "take less knockback");
+		passiveDescriptors.put(17, "you have a chance to shoot an area of effect flame rune when attacked.");
+		passiveDescriptors.put(18, "you shoot shrapnel out of your armor which blasts enemies in a 1 block radius away from you.");
+		passiveDescriptors.put(23, "you have a chance to pull attackers toward you.");
+		passiveDescriptors.put(24, "you have a chance to greatly damage attackers when they damage you.");
+		passiveDescriptors.put(26, "you have a chance to bury an attacker in the ground if they hit you.");
+		passiveDescriptors.put(27, "on low health, you release a cloud of dust that blinds and nauseates.");
+		passiveDescriptors.put(32, "take no knockback and shatter the ground when taking a long fall.");
+		passiveDescriptors.put(34, "shift to get blasted into the air.");
+		passiveDescriptors.put(35, "you have good defense at the cost of 1 level per hit");
+		passiveDescriptors.put(36, "sneaking sends out a massive shockwave that launches all enemies backwards.");
+		passiveDescriptors.put(41, "you have diamond minions that float in the air which tracks and damage nearby enemies by flying into them.");
+		passiveDescriptors.put(42, "you have a permanent health boost of 2 full hearts, regeneration 1, and speed 1.");
+		passiveDescriptors.put(43, "sneaking sends out a blast of diamond colored spikes that do severe damage to entities in a range of 5 blocks.  However, this ability consumes 1 piece of diamond armor the player is wearing.");
+		passiveDescriptors.put(44, "sneaking and right clicking gives speed 5 at the cost of 10 experience levels for two minutes.");
+		passiveDescriptors.put(45, "sneaking prevents all entities from coming in a range of 7 blocks of you, but you randomly take half a heart of damage while this ability is enabled.");
+		passiveDescriptors.put(137, "you turn invisible while sneaking.");
+		passiveDescriptors.put(139, "hitting an enemy has a chance to slow them down until they die.");
+		passiveDescriptors.put(140, "when you're damaged you summon silverfish allies.");
+		passiveDescriptors.put(143, "you can throw enderpearls from your hand that can only travel 10 blocks.");
+		passiveDescriptors.put(144, "gain 2x experience from kills.");
+		passiveDescriptors.put(147, "use '/radio <songname> <pitch>' to start playing a song and '/radio stop' to end the song.  ex: /radio cat 1.2");
+		passiveDescriptors.put(148, "leave a trail of fire behind you while sprinting.");
+		passiveDescriptors.put(149, "you have a chance to cheat death if not killed by a player.");
+		passiveDescriptors.put(150, "you burn in sunlight but every kill heals you.");
+		passiveDescriptors.put(151, "if you are hit by a player, you teleport directly behind them if they are at full health.");
+		passiveDescriptors.put(152, "you take reduced damage when you fall below 3 hearts.");
+		passiveDescriptors.put(156, "you move very slowly but take 90% less damage.");
+		passiveDescriptors.put(157, "a random potion drops on you when you sneak.");
+		passiveDescriptors.put(158, "small chance to disarm an opponent if attacking them from behind.  Monsters drop weapons while players have their offhand and mainhand switched with eachother.");
+		passiveDescriptors.put(33, "if headshots are enabled, headshots deal no damage.");
+		passiveDescriptors.put(25, "if headshots are enabled, headshots deal only half damage");
 	}
 
 	@Override
@@ -1181,6 +1220,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			List<Integer> abilities = shopGUIS.enabled.get(p.getName());
 			if(abilities.contains(35)) {
 				if(p.getLevel() >= 1) {
+				p.setLevel(p.getLevel() - 1);
 				doCrystallized(p);
 				initialDamage = initialDamage / 3.0;
 				}
@@ -1388,7 +1428,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		return false;
 	}
 	
-	public boolean isWater(Location l, boolean justair) {
+	public boolean isWater(Location l) {
 		Block b = l.getBlock();
 		if(b != null) {
 			Material m = b.getType();
@@ -6615,8 +6655,8 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		            				Bukkit.getScheduler().runTaskLater(this, () -> p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 2), 40);
 		            				Bukkit.getScheduler().runTaskLater(this, () -> p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 2), 60);
 		            				ability44.add(p);
-		            				p.setLevel(p.getLevel()-15);
-		            				addPotionEffectBetter(p, PotionEffectType.SPEED, 2400, 9, true, true, false);
+		            				p.setLevel(p.getLevel()-10);
+		            				addPotionEffectBetter(p, PotionEffectType.SPEED, 2400, 4, true, true, false);
 		            				p.setSneaking(false);
 		            			}
 		            	}
@@ -6637,9 +6677,10 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					doShockWave(p);
 				}
 			}
-			if(isWater(e.getPlayer().getLocation()), false)
+			if(isWater(e.getPlayer().getLocation()) && shopGUIS.enabled.get(p.getName()).contains(180))
 			{
-				
+				p.setVelocity(p.getLocation().getDirection());
+				p.getWorld().playSound(p.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, (float) 1);
 			}
 			doSneakP(p);
 		}

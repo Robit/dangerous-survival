@@ -1,5 +1,0 @@
-passiveDescriptors.put(, "");
-passiveDescriptors.put(, "");
-passiveDescriptors.put(, "");
-passiveDescriptors.put(33, "If headshots are enabled, headshots deal no damage.");
-passiveDescriptors.put(25, "If headshots are enabled, headshots deal only half damage");
