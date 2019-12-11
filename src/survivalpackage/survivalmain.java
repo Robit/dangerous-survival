@@ -6697,7 +6697,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 							for(Block b : locations) {
 								if(b.getLocation() != p.getLocation().subtract(0, 1, 0).getBlock().getLocation()) {
 								l.getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, b.getLocation().add(0.5, 0.5, 0.5), 1);
-								b.setType(Material.AIR);
+								//b.setType(Material.AIR);
 								}
 							}
 						}
@@ -6954,6 +6954,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			swordEffectsF();
 		}
 		
+		@EventHandler
 	    public void onHit(EntityDamageEvent event){
 	        if (event.getEntity() instanceof Player){
 	            for(int i = 0; i < ability8.size(); i++)
