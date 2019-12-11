@@ -7864,7 +7864,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				ItemStack item = e.getItem().getItemStack();
 				if(hasLore(item, "experience")) {
 					e.setCancelled(true);
-					((Player) e.getEntity()).setLevel(((Player) e.getEntity()).getLevel() + 1);
+					((Player) e.getEntity()).setExp(((Player) e.getEntity()).getExp() + 1);
 					e.getItem().remove();
 				}
 			}
