@@ -5605,7 +5605,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 							}
 							if(hasLore(it, "Lifesteal Talisman")) {
 								if(randor.nextInt(4)==1) {
-									p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20, 200));
+									p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 100, 0));
 								}
 							}
 							if(hasLore(it, "Wither Talisman Level: 3")) {
