@@ -327,11 +327,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		}
 		
 		World w = Bukkit.getWorld(worlds.get(0));
-		larry = w.spawnEntity(w.getSpawnLocation(), EntityType.LLAMA).getUniqueId().toString();
-		Bukkit.getEntity(UUID.fromString(larry)).setInvulnerable(true);
-		((Llama) Bukkit.getEntity(UUID.fromString(larry))).setRemoveWhenFarAway(false);
-		addPotionEffectBetter(((Llama) Bukkit.getEntity(UUID.fromString(larry))), PotionEffectType.SLOW, 99999999, 150, false, false, false);
-        addPotionEffectBetter(((Llama) Bukkit.getEntity(UUID.fromString(larry))), PotionEffectType.INVISIBILITY, 99999999, 150, false, false, false);
 		bs = new blockSounds();
 		spawndistance = config.getInt("Spawn Radius ");
 		addToWhitelist();
@@ -487,10 +482,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	@Override
 	public void onDisable() {
 		instance = null;
-		Entity e = Bukkit.getEntity(UUID.fromString(larry));
-		if(e != null) {
-			e.remove();
-		}
 		saveConfigs();
 	}
 	
