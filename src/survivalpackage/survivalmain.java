@@ -4100,9 +4100,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
     @EventHandler
     public void onPlayerHitWithPotion(EntityDamageByEntityEvent e) {
     	if(worlds.contains(e.getEntity().getWorld().getName()) && potionE) {
-    		if(inSpawnRegion(e.getEntity().getLocation())) {
-				return;
-			}
+    		//if(inSpawnRegion(e.getEntity().getLocation())) {
+				//return;
+			//}
     	if(e.getDamager() instanceof Player && e.getEntity() instanceof LivingEntity) {
     		ItemStack item = ((Player) e.getDamager()).getInventory().getItemInMainHand();
 			if(item != null) {
@@ -5275,9 +5275,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	@EventHandler
 	public void artifactClick(PlayerInteractEvent event) {
 		Player p = event.getPlayer();
-		if(inSpawnRegion(p.getLocation())) {
-			return;
-		}
+		//if(inSpawnRegion(p.getLocation())) {
+			//return;
+		//}
 		if(event.getAction()==Action.RIGHT_CLICK_BLOCK||event.getAction()==Action.RIGHT_CLICK_AIR) {
 			if(hasLore(p, "Pulling Device Level: 3")) {
 					for(Entity e : p.getNearbyEntities(12, 12, 12)) {
@@ -5510,9 +5510,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	public void onPlayerDmg(EntityDamageByEntityEvent event) {
 		if(event.getDamager() instanceof LivingEntity && event.getEntity() instanceof Player) {
 			PlayerInventory i = ((Player) event.getEntity()).getInventory();
-			if(inSpawnRegion(event.getEntity().getLocation()) || event.isCancelled()) {
-				return;
-			}
+			//if(inSpawnRegion(event.getEntity().getLocation()) || event.isCancelled()) {
+				//return;
+			//}
 			if(i.contains(Material.PINK_DYE)||i.contains(Material.IRON_NUGGET)||i.contains(Material.GHAST_TEAR)||i.contains(Material.PLAYER_HEAD)||i.getHelmet()!=null) {
 				Player p = ((Player) event.getEntity());
 				for(ItemStack it : i.getContents()) {
@@ -5696,7 +5696,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	public void onArtifactPlaced(BlockPlaceEvent event) {
 		ItemStack it = event.getItemInHand();
 		Player p = ((Player) event.getPlayer());
-		if(inSpawnRegion(p.getLocation()) || event.isCancelled()) {
+		if(event.isCancelled()) {
 			return;
 		}
 				if(hasLore(it, "Explosive Web Level: 3")) {
@@ -5732,9 +5732,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	public void onArtifactEat(PlayerItemConsumeEvent event) {
 		ItemStack it = event.getItem();
 		Player p = ((Player) event.getPlayer());
-		if(inSpawnRegion(p.getLocation())) {
-			return;
-		}
+		//if(inSpawnRegion(p.getLocation())) {
+			//return;
+		//}
 				if(hasLore(it, "Hearty Food")) {
 					p.setFoodLevel(20);
 					return;
@@ -5768,9 +5768,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		if(event.getEntity() instanceof Player) {
 			ItemStack it = event.getBow();
 			Player p = ((Player) event.getEntity());
-			if(inSpawnRegion(p.getLocation())) {
-				return;
-			}
+			//if(inSpawnRegion(p.getLocation())) {
+				//return;
+			//}
 					Vector v = new Vector(event.getProjectile().getVelocity().getX(),event.getProjectile().getVelocity().getY(),event.getProjectile().getVelocity().getZ());
 					if(hasLore(it, "Assault Bow Level: 3")) {
 						Bukkit.getScheduler().runTaskLater(this, () -> p.launchProjectile(Arrow.class, v), 5);	
@@ -9052,16 +9052,16 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		
 		@EventHandler
 		public void breakb(BlockBreakEvent e) {
-			if(inSpawnRegion(e.getBlock().getLocation())) {
-				e.setCancelled(true);
-			}
+			//if(inSpawnRegion(e.getBlock().getLocation())) {
+				//e.setCancelled(true);
+			//}
 		}
 		
 		@EventHandler
 		public void placep(BlockPlaceEvent e) {
-			if(inSpawnRegion(e.getBlock().getLocation())) {
-				e.setCancelled(true);
-			}
+			//if(inSpawnRegion(e.getBlock().getLocation())) {
+				//e.setCancelled(true);
+			//}
 		}
 		
 }
