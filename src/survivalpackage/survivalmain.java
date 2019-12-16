@@ -2573,7 +2573,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			if(attacker.getCustomName()!=null) {
 				return;
 			}
-			if (randor.nextInt(10) < 3) {
+			if (!inSpawnRegion(attacker.getLocation()) && randor.nextInt(10) < 3) {
 				Location loc = damaged.getLocation();
 				loc.getBlock().setType(Material.COBWEB);
 				loc.getWorld().spawnParticle(Particle.BLOCK_CRACK, loc.getBlock().getLocation().add(.5, .5, .5), 20, .3, .3, .3, 0, Material.COBWEB.createBlockData());
