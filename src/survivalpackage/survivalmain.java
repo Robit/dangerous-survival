@@ -217,8 +217,6 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	HashMap<Player, Float> pitches = new HashMap<Player, Float>();
 	HashMap<String, Integer> discnames = new HashMap<String, Integer>();
 	
-	List<Color> colors = new ArrayList<Color>();
-	
 	public HashMap<String, Float> velocityPower = new HashMap<String, Float>();
 	public HashMap<String, Float> attackPower = new HashMap<String, Float>();
 	public HashMap<String, Float> strengthPower = new HashMap<String, Float>();
@@ -477,6 +475,26 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		passiveDescriptors.put(51, "Infinite food!");
 		passiveDescriptors.put(52, "Infinite food!");
 		passiveDescriptors.put(53, "you gain an infinitely edible golden apple. However, unlike the other infinite foods, this one is linked to your soul and loses its power on your death. Treasure it.");
+        passiveDescriptors.put(1, "You gain an unbreakable item!");
+        passiveDescriptors.put(2, "You gain an unbreakable item!");
+        passiveDescriptors.put(3, "You gain an unbreakable item!");
+        passiveDescriptors.put(4, "You gain an unbreakable item!");
+        passiveDescriptors.put(10, "You gain an unbreakable item!");
+        passiveDescriptors.put(11, "You gain an unbreakable item!");
+        passiveDescriptors.put(12, "You gain an unbreakable item!");
+        passiveDescriptors.put(13, "You gain an unbreakable item!");
+        passiveDescriptors.put(19, "You gain an unbreakable item!");
+        passiveDescriptors.put(20, "You gain an unbreakable item!");
+        passiveDescriptors.put(21, "You gain an unbreakable item!");
+        passiveDescriptors.put(22, "You gain an unbreakable item!");
+        passiveDescriptors.put(28, "You gain an unbreakable item!");
+        passiveDescriptors.put(29, "You gain an unbreakable item!");
+        passiveDescriptors.put(30, "You gain an unbreakable item!");
+        passiveDescriptors.put(31, "You gain an unbreakable item!");
+        passiveDescriptors.put(38, "You gain an unbreakable item!");
+        passiveDescriptors.put(39, "You gain an unbreakable item!");
+        passiveDescriptors.put(40, "You gain an unbreakable item!");
+        passiveDescriptors.put(138, "You gain an unbreakable item!");
 	}
 
 	@Override
@@ -2575,7 +2593,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			}
 			if (!inSpawnRegion(attacker.getLocation()) && randor.nextInt(10) < 3) {
 				Location loc = damaged.getLocation();
-				loc.getBlock().setType(Material.COBWEB);
+				//loc.getBlock().setType(Material.COBWEB);
 				loc.getWorld().spawnParticle(Particle.BLOCK_CRACK, loc.getBlock().getLocation().add(.5, .5, .5), 20, .3, .3, .3, 0, Material.COBWEB.createBlockData());
 				loc.getWorld().spawnParticle(Particle.CLOUD, loc.getBlock().getLocation().add(0.5, 0.5, 0.5), 20, 0, 0, 0, 0.05);
 			} 
@@ -2715,7 +2733,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	@EventHandler
 	public void playerDamage(EntityDamageEvent e) {
 		if(inSpawnRegion(e.getEntity().getLocation())) {
-			e.setCancelled(true);
+			//e.setCancelled(true);
 			return;
 		}
 		if(worlds.contains(e.getEntity().getWorld().getName()) && fallE) {
@@ -2784,9 +2802,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	public void onArrowHit(ProjectileHitEvent event) {
 		if(worlds.contains(event.getEntity().getWorld().getName()) && headshotsE) {
 		if(event.getHitEntity()!=null) {
-			if(inSpawnRegion(event.getHitEntity().getLocation())) {
-				return;
-			}
+			//if(inSpawnRegion(event.getHitEntity().getLocation())) {
+				//return;
+			//}
 			if(event.getEntity() instanceof Arrow) {
 				if(event.getHitEntity() instanceof LivingEntity) {
 					LivingEntity enti = (LivingEntity) event.getHitEntity();
@@ -3638,9 +3656,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
     			e.setCancelled(true);
     			}
     		}
-    		if(inSpawnRegion(e.getEntity().getLocation())) {
-    			e.setCancelled(true);
-    		}
+    		//if(inSpawnRegion(e.getEntity().getLocation())) {
+    			//e.setCancelled(true);
+    		//}
     	}
     }
     
@@ -7111,14 +7129,14 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			for(Player p : ability41c) {
 				ArrayList<Entity> diamondm2 = new ArrayList<Entity>(diamondm.get(p));
 				//spawn minion if player count is less than 3
-				if(diamondm2.size() < ((int) (2 + magicPower.get(p.getName())))) {
+				if(diamondm2.size() < 3) {
 					if(randor.nextInt(10)==1) {
 						diamondm.get(p).add(spawnDiamondMinion(p));
 					}
 				}
 				//check if any minions are gone
 				for(Entity minion : diamondm2) {
-					if(minion == null) {
+                    if (minion == null || p == null || !p.isOnline()) {
 						diamondm.get(p).remove(minion);
 					}
 				}
@@ -7144,7 +7162,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				//check around player for enemies
 				Entity enemy = null;
 				for(Entity e : p.getNearbyEntities(8, 8, 8)) {
-					if(e instanceof Monster || e instanceof Player) {
+                if (e instanceof Monster) {
 						enemy = e;
 						break;
 					}
@@ -8036,31 +8054,31 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 						Location l5 = e.getHitBlock().getLocation().add(-1, 1, 0);
 						Location l6 = e.getHitBlock().getLocation().add(0, 1, -1);
 						Location l7 = e.getHitBlock().getLocation();
-						if(isBlockNotSolid(l1.getBlock())) {
+                    if (l1.getBlock().isEmpty()) {
 							Bukkit.getScheduler().runTaskLater(this, () ->  l1.getBlock().setType(Material.COBWEB), 1);
 							Bukkit.getScheduler().runTaskLater(this, () ->  l1.getWorld().spawnParticle(Particle.CLOUD, l1.add(0.5, 0.5, 0.5), 20, 0, 0, 0, 0.05), 1);
 						}
-						if(isBlockNotSolid(l2.getBlock())) {
+                    if (l2.getBlock().isEmpty()) {
 							Bukkit.getScheduler().runTaskLater(this, () ->  l2.getBlock().setType(Material.COBWEB), 5);
 							Bukkit.getScheduler().runTaskLater(this, () ->  l2.getWorld().spawnParticle(Particle.CLOUD, l2.add(0.5, 0.5, 0.5), 20, 0, 0, 0, 0.05), 5);
 						}
-						if(isBlockNotSolid(l3.getBlock())) {
+                    if (l3.getBlock().isEmpty()) {
 							Bukkit.getScheduler().runTaskLater(this, () ->  l3.getBlock().setType(Material.COBWEB), 10);
 							Bukkit.getScheduler().runTaskLater(this, () ->  l3.getWorld().spawnParticle(Particle.CLOUD, l3.add(0.5, 0.5, 0.5), 20, 0, 0, 0, 0.05), 10);
 						}
-						if(isBlockNotSolid(l4.getBlock())) {
+                    if (l4.getBlock().isEmpty()) {
 							Bukkit.getScheduler().runTaskLater(this, () ->  l4.getBlock().setType(Material.COBWEB), 15);
 							Bukkit.getScheduler().runTaskLater(this, () ->  l4.getWorld().spawnParticle(Particle.CLOUD, l4.add(0.5, 0.5, 0.5), 20, 0, 0, 0, 0.05), 15);
 						}
-						if(isBlockNotSolid(l5.getBlock())) {
+                    if (l5.getBlock().isEmpty()) {
 							Bukkit.getScheduler().runTaskLater(this, () ->  l5.getBlock().setType(Material.COBWEB), 20);
 							Bukkit.getScheduler().runTaskLater(this, () ->  l5.getWorld().spawnParticle(Particle.CLOUD, l5.add(0.5, 0.5, 0.5), 20, 0, 0, 0, 0.05), 20);
 						}
-						if(isBlockNotSolid(l6.getBlock())) {
+                    if (l6.getBlock().isEmpty()) {
 							Bukkit.getScheduler().runTaskLater(this, () ->  l6.getBlock().setType(Material.COBWEB), 25);
 							Bukkit.getScheduler().runTaskLater(this, () ->  l6.getWorld().spawnParticle(Particle.CLOUD, l6.add(0.5, 0.5, 0.5), 20, 0, 0, 0, 0.05), 25);
 						}
-						if(isBlockNotSolid(l7.getBlock())) {
+                    if (l7.getBlock().isEmpty()) {
 							Bukkit.getScheduler().runTaskLater(this, () ->  l7.getBlock().setType(Material.COBWEB), 30);
 							Bukkit.getScheduler().runTaskLater(this, () ->  l7.getWorld().spawnParticle(Particle.CLOUD, l7.add(0.5, 0.5, 0.5), 20, 0, 0, 0, 0.05), 30);
 						}
@@ -8772,7 +8790,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					int amp = randor.nextInt(4);
 					int duration = ((randor.nextInt(30)+1)*20);
 					potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.values()[randor.nextInt(PotionEffectType.values().length)], duration, amp), true);
-					potionMeta.setColor(colors.get(randor.nextInt(colors.size())));
+                    potionMeta.setColor(Color.fromBGR(randor.nextInt(16777216)));
 					
 					itemStack.setItemMeta(potionMeta);
 
