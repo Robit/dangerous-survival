@@ -140,7 +140,6 @@ import org.bukkit.scoreboard.Team.Option;
 import org.bukkit.scoreboard.Team.OptionStatus;
 import org.bukkit.util.BlockIterator;
 import org.bukkit.util.BoundingBox;
-import org.bukkit.util.EulerAngle;
 import org.bukkit.util.Vector;
 
 import net.md_5.bungee.api.chat.TextComponent;
@@ -170,6 +169,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	int monsterViewDistance = 64;
 	
 	public HashMap<String, String> playerFakes = new HashMap<String, String>();
+    List<String> playersRedeemedArtifact = new ArrayList<String>();
 	List<String> playersInArtifact = new ArrayList<String>();
 	
 	Location regionLoc1 = null;
@@ -447,7 +447,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		passiveDescriptors.put(34, "shift to get blasted into the air.");
 		passiveDescriptors.put(35, "you have good defense at the cost of 1 level per hit");
 		passiveDescriptors.put(36, "sneaking sends out a massive shockwave that launches all enemies backwards.");
-		passiveDescriptors.put(41, "you have diamond minions that float in the air which tracks and damage nearby enemies by flying into them.");
+		//passiveDescriptors.put(41, "you have diamond minions that float in the air which tracks and damage nearby enemies by flying into them.");
 		passiveDescriptors.put(42, "you have a permanent health boost of 2 full hearts, regeneration 1, and speed 1.");
 		passiveDescriptors.put(43, "sneaking sends out a blast of diamond colored spikes that do severe damage to entities in a range of 5 blocks.  However, this ability consumes 1 piece of diamond armor the player is wearing.");
 		passiveDescriptors.put(44, "sneaking and right clicking gives speed 5 at the cost of 10 experience levels for two minutes.");
@@ -1083,7 +1083,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 								pitches.remove(p);
 							}
 							for(String disctype : discnames.keySet()) {
-								p.stopSound(Sound.valueOf("RECORD_" + disctype.toUpperCase()));
+                                    p.stopSound(Sound.valueOf("MUSIC_DISC_" + disctype.toUpperCase()));
 							}
 							p.sendMessage(ChatColor.LIGHT_PURPLE + "Stopped your radio!");
 							return true;
@@ -1100,12 +1100,12 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 								return true;
 							}
 							for(String disctype : discnames.keySet()) {
-								p.stopSound(Sound.valueOf("RECORD_" + disctype.toUpperCase()));
+                                    p.stopSound(Sound.valueOf("MUSIC_DISC_" + disctype.toUpperCase()));
 							}
 							playertimes.put(p.getName(), 0);
 							discs.put(p, discname);
 							pitches.put(p, pitch);
-							p.playSound(p.getLocation(), Sound.valueOf("RECORD_" + discname.toUpperCase()), 100, pitch);
+                                p.playSound(p.getLocation(), Sound.valueOf("MUSIC_DISC_" + discname.toUpperCase()), 100, pitch);
 							p.sendMessage(ChatColor.LIGHT_PURPLE + "Track " + discname + " at pitch " + pitch + " has been started on the radio.");
 							p.sendMessage(ChatColor.LIGHT_PURPLE + "Thank you for using the radio today!");
 							return true;
@@ -4659,31 +4659,36 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	}
 	
 	public void doArtifactActivationEffect(Player p) {
-		playersInArtifact.add(p.getName());
-		p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_DEATH, 3, 0);
-		Location l = p.getLocation();
-		int sizeOfSide = 7;
-		Material blockused = Material.BLACK_CONCRETE;
-		l.subtract(sizeOfSide, sizeOfSide, sizeOfSide);
-		for(int x = 0; x < sizeOfSide*2; x++) {
-			for(int y = 0; y < sizeOfSide*2; y++) {
-				for(int z = 0; z < sizeOfSide*2; z++) {
-					Location copy = l.clone().add(x, y, z);
-					if((x == 0 || x == sizeOfSide*2-1)||(y == 0 || y == sizeOfSide*2-1)||(z == 0 || z == sizeOfSide*2-1)) {
-						p.sendBlockChange(copy, blockused.createBlockData());
-					}
-					else {
-						p.sendBlockChange(copy, Material.AIR.createBlockData());
-					}
-				}
-			}
-		}
-		p.sendBlockChange(p.getLocation().subtract(0, 1, 0), blockused.createBlockData());
-		p.sendTitle(ChatColor.DARK_RED +  "Do Y" + ChatColor.MAGIC + "o" + ChatColor.RESET + "" + ChatColor.DARK_RED + "U deSirE", "P" + ChatColor.MAGIC + "o" + ChatColor.RESET + "" + ChatColor.DARK_RED + "wER?", 10, 50, 10);
-		Bukkit.getScheduler().runTaskLater(this, () -> p.sendTitle(ChatColor.DARK_RED +  "i Wil" + ChatColor.MAGIC + "l" + ChatColor.RESET + "" + ChatColor.DARK_RED + "GiVe It", "t" + ChatColor.MAGIC + "O" + ChatColor.RESET + "" + ChatColor.DARK_RED + "yOu.", 10, 60, 10), 90);
-		Bukkit.getScheduler().runTaskLater(this, () -> p.sendTitle(ChatColor.DARK_RED +  "nOw " + ChatColor.MAGIC + "Wak" + ChatColor.RESET + "" + ChatColor.DARK_RED + "e " + ChatColor.MAGIC + "u" + ChatColor.RESET + "" + ChatColor.DARK_RED + "P", "", 10, 60, 10), 210);
-		Bukkit.getScheduler().runTaskLater(this, () -> removePlayerInArtifact(p.getName()), 320);
-	}
+        if (playersRedeemedArtifact.contains(p.getName())) {
+            playersRedeemedArtifact.add(p.getName());
+            Bukkit.getScheduler().runTaskLater(this, () -> removePlayerInArtifact(p.getName()), 20);
+        } else {
+            playersRedeemedArtifact.add(p.getName());
+            playersInArtifact.add(p.getName());
+            p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_DEATH, 3, 0);
+            Location l = p.getLocation();
+            int sizeOfSide = 7;
+            Material blockused = Material.BLACK_CONCRETE;
+            l.subtract(sizeOfSide, sizeOfSide, sizeOfSide);
+            for (int x = 0; x < sizeOfSide * 2; x++) {
+                for (int y = 0; y < sizeOfSide * 2; y++) {
+                    for (int z = 0; z < sizeOfSide * 2; z++) {
+                        Location copy = l.clone().add(x, y, z);
+                        if ((x == 0 || x == sizeOfSide * 2 - 1) || (y == 0 || y == sizeOfSide * 2 - 1) || (z == 0 || z == sizeOfSide * 2 - 1)) {
+                            p.sendBlockChange(copy, blockused.createBlockData());
+                        } else {
+                            p.sendBlockChange(copy, Material.AIR.createBlockData());
+                        }
+                    }
+                }
+            }
+            p.sendBlockChange(p.getLocation().subtract(0, 1, 0), blockused.createBlockData());
+            p.sendTitle(ChatColor.DARK_RED + "Do Y" + ChatColor.MAGIC + "o" + ChatColor.RESET + "" + ChatColor.DARK_RED + "U deSirE", "P" + ChatColor.MAGIC + "o" + ChatColor.RESET + "" + ChatColor.DARK_RED + "wER?", 10, 50, 10);
+            Bukkit.getScheduler().runTaskLater(this, () -> p.sendTitle(ChatColor.DARK_RED + "i Wil" + ChatColor.MAGIC + "l" + ChatColor.RESET + "" + ChatColor.DARK_RED + "GiVe It", "t" + ChatColor.MAGIC + "O" + ChatColor.RESET + "" + ChatColor.DARK_RED + "yOu.", 10, 60, 10), 90);
+            Bukkit.getScheduler().runTaskLater(this, () -> p.sendTitle(ChatColor.DARK_RED + "nOw " + ChatColor.MAGIC + "Wak" + ChatColor.RESET + "" + ChatColor.DARK_RED + "e " + ChatColor.MAGIC + "u" + ChatColor.RESET + "" + ChatColor.DARK_RED + "P", "", 10, 60, 10), 210);
+            Bukkit.getScheduler().runTaskLater(this, () -> removePlayerInArtifact(p.getName()), 320);
+        }
+    }
 	
 	public void removePlayerInArtifact(String s) {
 		Player p = Bukkit.getPlayer(s);
@@ -4745,7 +4750,11 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				shopGUIS.enabled.get(p.getName()).add(ability);
 				enabledAbility(ability, p);
 				if(passiveDescriptors.containsKey(ability)) {
-				    p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Until next death, " + passiveDescriptors.get(ability));
+                    if (passiveDescriptors.get(ability).contains("food!") || passiveDescriptors.get(ability).contains("unbreakable")) {
+                        p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + passiveDescriptors.get(ability));
+                    } else {
+                        p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Until next death, " + passiveDescriptors.get(ability));
+                    }
 				}
 				else {
 					p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "A dud... (let the plugin dev know if it isnt!)");
@@ -7062,7 +7071,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 								p.playSound(p.getLocation(), Sound.ITEM_BOTTLE_FILL, 1, 1);
 							}
 							else {
-								p.setHealth(p.getHealthScale());
+                            // p.setHealth(p.getHealthScale());
 							}
 						}
 				}
@@ -7126,7 +7135,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				}
 			}
 			ArrayList<Player> ability41c = new ArrayList<Player>(ability41);
-			for(Player p : ability41c) {
+			/*for(Player p : ability41c) {
 				ArrayList<Entity> diamondm2 = new ArrayList<Entity>(diamondm.get(p));
 				//spawn minion if player count is less than 3
 				if(diamondm2.size() < 3) {
@@ -7195,7 +7204,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					}
 				}
 			}
+			*/
 		}
+		
 		
 		public void doForcefieldParticles(Player p) {
 			final Location loc = p.getLocation();
@@ -7276,16 +7287,17 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		}
 		
 		public Entity spawnDiamondMinion(Player p) {
-			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1, (float) 1.5);
-			Location l = p.getLocation().add(0, 1, 0);
-			ArmorStand e = (ArmorStand) l.getWorld().spawnEntity(l, EntityType.ARMOR_STAND);
+        // p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1, (float) 1.5);
+        // Location l = p.getLocation().add(0, 1, 0);
+        // ArmorStand e = (ArmorStand) l.getWorld().spawnEntity(l,
+        // EntityType.ARMOR_STAND);
 			
-			e.setVisible(false);
-			e.setCustomNameVisible(false);
-			e.setBasePlate(false);
-			e.setHelmet(new ItemStack(Material.DIAMOND_BLOCK, 1));
+        // e.setVisible(false);
+        // e.setCustomNameVisible(false);
+        // e.setBasePlate(false);
+        // e.setHelmet(new ItemStack(Material.DIAMOND_BLOCK, 1));
 			
-			return e;
+        return null;
 		}
 		
 		public void doDiamondMinionEffect(Location l, Player p) {
@@ -7803,7 +7815,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				if(abilities.contains(89)) {
 					v.multiply(2);
 					if(a instanceof Arrow) {
-						destroyArrow((Arrow) a);
+                        // destroyArrow((Arrow) a);
 					}
 					ability89.add(a);
 					a.setMetadata("89", new FixedMetadataValue(this, 0));
@@ -7879,6 +7891,10 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 				}
 				if(abilities.contains(104)) {
 					ability104.add(a);
+                    final Projectile toRemove = a;
+                    Bukkit.getScheduler().runTaskLater(this, () -> {
+                        ability104.remove(toRemove);
+                    }, 100);
 					a.setMetadata("104", new FixedMetadataValue(this, 0));
 				}
 				if(abilities.contains(115)) {
@@ -7994,7 +8010,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					}
 					if(a.hasMetadata("89")) {
 						Location start = a.getLocation().clone();
-						a.getWorld().strikeLightning(start);
+						a.getWorld().spigot().strikeLightning(start, true);
 						for(int count = 0; count < 10; count++) {
 						Location end = getRandLoc(start.clone(), 1);
 						double step = 0.05D;
@@ -8251,7 +8267,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					}
 					if(a.hasMetadata("89")) {
 						Location start = le.getLocation().clone();
-						a.getWorld().strikeLightning(start);
+                        a.getWorld().spigot().strikeLightning(start, true);
 						for(int count = 0; count < 10; count++) {
 						Location end = getRandLoc(start.clone(), 1);
 						double step = 0.05D;
@@ -8917,7 +8933,8 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 			}
 				//swords
 			else if(index == 56) {
-			        p.getWorld().dropItemNaturally(p.getLocation(), (new ItemStack(Material.SHIELD)));
+            ItemStack shield = shopGUIS.makeItem(Material.WOODEN_SWORD.name(), ChatColor.GRAY + "Shield", Arrays.asList(ChatColor.GRAY + "A trusty hardwood sword."), true);
+            p.getWorld().dropItemNaturally(p.getLocation(), shield);
 				}
 			else if(index == 55) {
 					ItemStack sword = shopGUIS.makeItem(Material.WOODEN_SWORD.name(), ChatColor.GRAY + "Wooden Sword", Arrays.asList(ChatColor.GRAY + "A dull wooden sword."), true);
