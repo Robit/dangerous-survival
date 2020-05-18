@@ -1,5 +1,7 @@
 package survivalpackage;
 
+import java.awt.Color;
+import java.awt.TextComponent;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.server.Skeleton;
 import java.util.ArrayList;
@@ -9,17 +11,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.Vector;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Ageable;
@@ -43,7 +43,6 @@ import org.bukkit.entity.DragonFireball;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Enderman;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Evoker;
 import org.bukkit.entity.Fireball;
@@ -79,7 +78,6 @@ import org.bukkit.entity.WitherSkull;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockGrowEvent;
@@ -110,39 +108,6 @@ import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
-import org.bukkit.event.player.PlayerToggleSneakEvent;
-import org.bukkit.inventory.EntityEquipment;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.loot.LootContext;
-import org.bukkit.loot.LootContext.Builder;
-import org.bukkit.loot.LootTable;
-import org.bukkit.loot.Lootable;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import org.bukkit.projectiles.ProjectileSource;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitScheduler;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
-import org.bukkit.scoreboard.Team;
-import org.bukkit.scoreboard.Team.Option;
-import org.bukkit.scoreboard.Team.OptionStatus;
-import org.bukkit.util.BlockIterator;
-import org.bukkit.util.BoundingBox;
-import org.bukkit.util.Vector;
-
-import net.md_5.bungee.api.chat.TextComponent;
 
 
 public class survivalmain extends JavaPlugin implements Listener, CommandExecutor{
@@ -393,6 +358,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		doScoreboardThing();
 		
 		//Bow effect descriptors
+        passiveDescriptors.put(173, "shift left clicking will boost you in the direction you're facing.");
 		passiveDescriptors.put(103, "shoot 3 arrows at the same time instead of one.");
 		passiveDescriptors.put(104, "shoot 5 arrows at the same time instead of one");
 		passiveDescriptors.put(128, "shoot 7 arrows at the same time instead of one");
@@ -418,7 +384,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		passiveDescriptors.put(97, "when a player is hit by a arrow, steals 1 exp and drops it in the form of a lime dye.  Can be picked up by anyone to reward 1 exp.");
 		passiveDescriptors.put(113, "creates a bouncy slowing slime circle when a block is struck.");
 		passiveDescriptors.put(111, "whereever the arrow you shot hits, it will teleport you to that location.  If a arrow hits a entity, instead teleports that entity in a random block with a radius of 2 blocks.");
-		passiveDescriptors.put(96, "spawns a ball of web where your arrows land.");
+        // passiveDescriptors.put(96, "spawns a ball of web where your arrows land.");
 		passiveDescriptors.put(105, "arrows split into multiple other arrows when they collide with something.");
 		passiveDescriptors.put(110, "your arrows you shoot let you travel with them in the air.");
 		passiveDescriptors.put(114, "adds more knockback to the shots you fire.");
@@ -446,7 +412,8 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		passiveDescriptors.put(32, "take no knockback and shatter the ground when taking a long fall.");
 		passiveDescriptors.put(34, "shift to get blasted into the air.");
 		passiveDescriptors.put(35, "you have good defense at the cost of 1 level per hit");
-		passiveDescriptors.put(36, "sneaking sends out a massive shockwave that launches all enemies backwards.");
+        // passiveDescriptors.put(36, "sneaking sends out a massive shockwave that
+        // launches all enemies backwards.");
 		//passiveDescriptors.put(41, "you have diamond minions that float in the air which tracks and damage nearby enemies by flying into them.");
 		passiveDescriptors.put(42, "you have a permanent health boost of 2 full hearts, regeneration 1, and speed 1.");
 		passiveDescriptors.put(43, "sneaking sends out a blast of diamond colored spikes that do severe damage to entities in a range of 5 blocks.  However, this ability consumes 1 piece of diamond armor the player is wearing.");
@@ -458,7 +425,8 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		passiveDescriptors.put(143, "you can throw enderpearls from your hand that can only travel 10 blocks.");
 		passiveDescriptors.put(144, "gain 2x experience from kills.");
 		passiveDescriptors.put(147, "use '/radio <songname> <pitch>' to start playing a song and '/radio stop' to end the song.  ex: /radio cat 1.2");
-		passiveDescriptors.put(148, "leave a trail of fire behind you while sprinting.");
+        // passiveDescriptors.put(148, "leave a trail of fire behind you while
+        // sprinting.");
 		passiveDescriptors.put(149, "you have a chance to cheat death if not killed by a player.");
 		passiveDescriptors.put(150, "you burn in sunlight but every kill heals you.");
 		passiveDescriptors.put(151, "if you are hit by a player, you teleport directly behind them if they are at full health.");
@@ -2631,6 +2599,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					return;
 				}
 				if (randor.nextInt(10) < 3) {
+				    /*
 					Location loc = damaged.getLocation().getBlock().getLocation();
 					damaged.teleport(loc.clone().add(0.5, 0, 0.5));
 					loc.clone().add(0, 1, 0).getBlock().getRelative(BlockFace.SOUTH).setType(Material.ICE);
@@ -2646,6 +2615,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 						Bukkit.getScheduler().runTaskLater(this, () -> loc2.getWorld().playSound(loc2, Sound.BLOCK_GLASS_BREAK, 1, (float) 1.3), randtime);
 						Bukkit.getScheduler().runTaskLater(this, () -> loc2.add(randor.nextInt(4)-1, randor.nextInt(4)-1, randor.nextInt(4)-1).getBlock().setType(Material.ICE), randtime);
 					}
+					*/
 				} 
 				else {
 					if (randor.nextInt(10) < 5) {
@@ -3487,7 +3457,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	public void onPlayerDiesAddToLimbo(EntityDeathEvent e) {
 		if(e.getEntity() instanceof Player) {
 			Player p = (Player) e.getEntity();
-		if(artifactsE) {
+            if (artifactsE && !p.getWorld().getEnvironment().equals(World.Environment.THE_END)) {
 			List<Integer> abilities = new ArrayList<Integer>(shopGUIS.enabled.get(p.getName()));
 			for(Integer i : abilities) {
 				disabledAbility(i, p);
@@ -6281,6 +6251,9 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		
 		public boolean blockBehindPlayer(Player p) {
 			Location l = p.getLocation();
+			if (l.getY() > l.getBlockY() + 0.01) {
+                l.setY(l.getBlockY() + 1);
+            }
 			if(isAir(l.subtract(0, .08, 0).getBlock().getType())==false) {
 				return false;
 			}
@@ -6921,7 +6894,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 	                         }
 	                 }
 			 }.runTaskTimer(this, 0, 1);
-			 for(Entity e : p.getNearbyEntities(6, 3, 6)) {
+            for (Entity e : p.getNearbyEntities(6, 3, 6)) {
 				 if(e instanceof Monster || e instanceof Player) {
 					 Vector v = e.getLocation().toVector().subtract(p.getLocation().toVector()).normalize().add(new Vector(0, 0.5, 0)).multiply(3);
 					 e.setVelocity(e.getVelocity().add(v));
@@ -7105,9 +7078,11 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 						damagePlayerReason(p, 1, "deal");
 					}
 					p.getWorld().playSound(p.getLocation(), Sound.ENTITY_FISHING_BOBBER_THROW, 1, 0);
-					for(Entity e : p.getNearbyEntities(6.5, 6.5, 6.5)) {
-						Vector v = e.getLocation().toVector().subtract(p.getLocation().toVector()).normalize();
-						e.setVelocity(v);
+                for (Entity e : p.getNearbyEntities(6.5, 6.5, 6.5)) {
+                    if (e instanceof Player || e instanceof Monster || e instanceof Projectile) {
+                        Vector v = e.getLocation().toVector().subtract(p.getLocation().toVector()).normalize();
+                        e.setVelocity(v);
+                    }
 					}
 					if(randor.nextInt(10)==1) {
 					doForcefieldParticles(p);
@@ -7868,7 +7843,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 					ability131.add(a);
 				}
 				if(abilities.contains(96)) {
-					a.setMetadata("96", new FixedMetadataValue(this, 0));
+                    // a.setMetadata("96", new FixedMetadataValue(this, 0));
 				}
 				if(abilities.contains(97)) {
 					ability97.add(a);
@@ -8849,7 +8824,7 @@ public class survivalmain extends JavaPlugin implements Listener, CommandExecuto
 		public void fireWalk(Player p, Location l) {
 			if(shopGUIS.enabled.get(p.getName()).contains(148)) {
 				if(isAir(l.getBlock().getType()) && p.isSprinting()) {
-					l.getBlock().setType(Material.FIRE);
+                // l.getBlock().setType(Material.FIRE);
 				}
 			}
 		}
